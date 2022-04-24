@@ -14,10 +14,8 @@ export const TextInput: React.FC<TextInputProps> = ({
 }) => {
   return (
     <div className="relative inline-block">
-      {leftIcon && <InlineIcon icon={leftIcon} type="input" direction="left" />}
-      {rightIcon && (
-        <InlineIcon icon={rightIcon} type="input" direction="right" />
-      )}
+      {leftIcon && <InlineIcon icon={leftIcon} direction="left" />}
+      {rightIcon && <InlineIcon icon={rightIcon} direction="right" />}
 
       <input
         {...rest}

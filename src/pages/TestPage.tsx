@@ -6,31 +6,63 @@ export const TestPage = () => {
   return (
     <div>
       <TextInput
-        leftIcon={<Horse className="text-success" weight="fill" size={30} />}
+        leftIcon={<Horse className="text-success" weight="fill" size={32} />}
         rightIcon={<Heart className="text-primary" weight="fill" size={32} />}
         placeholder="Type a name"
       />
-      ---
-      <Button color="success" size="lg" leftIcon={Heart} rightIcon={Heart}>
+      <Button
+        color="success"
+        size="lg"
+        leftIcon={<Heart className="text-white" weight="fill" size={28} />}
+        rightIcon={<Heart className="text-white" weight="fill" size={28} />}
+      >
         Normal
       </Button>
-      <Button color="error" size="md" leftIcon={Heart}>
+      <Button
+        color="error"
+        size="md"
+        leftIcon={<Heart className="text-white" weight="fill" size={28} />}
+      >
         Normal
       </Button>
       <Button
         color="primary"
         size="sm"
         outlined
-        leftIcon={Heart}
-        rightIcon={Heart}
+        leftIcon={
+          <Heart
+            className="text-primary group-hover:text-white"
+            weight="fill"
+            size={28}
+          />
+        }
+        rightIcon={
+          <Heart
+            className="text-primary group-hover:text-white"
+            weight="fill"
+            size={28}
+          />
+        }
       >
         Outlined
       </Button>
-      <Button color="warning" size="lg" outlined rightIcon={Heart}>
+      <Button
+        color="warning"
+        size="lg"
+        outlined
+        rightIcon={
+          <Heart
+            className="text-warning group-hover:text-white"
+            weight="fill"
+            size={32}
+          />
+        }
+      >
         Outlined
       </Button>
-      <div className="group">qqq</div>
-      <h1 className="group-hover:text-5xl">asd</h1>
+      <Button color="primary">Outlined</Button>
+      <Button color="warning">Outlined</Button>
+      <Button color="secondary">Outlined</Button>
     </div>
   );
 };

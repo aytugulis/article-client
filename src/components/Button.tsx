@@ -1,23 +1,25 @@
 import cx from "classnames";
 import { ColorVariant, SizeVariant } from "../type/Variant";
-import { IconProps } from "phosphor-react";
 import { InlineIcon } from "./InlineIcon";
+import styled from "styled-components";
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  rightIcon?: React.ForwardRefExoticComponent<
-    IconProps & React.RefAttributes<SVGSVGElement>
-  >;
-  leftIcon?: React.ForwardRefExoticComponent<
-    IconProps & React.RefAttributes<SVGSVGElement>
-  >;
+  rightIcon?: JSX.Element;
+  leftIcon?: JSX.Element;
   color: ColorVariant;
   size?: Exclude<SizeVariant, "xlg" | "xsm">;
   outlined?: boolean;
 }
+
+const Container = styled.div`
+  svg {
+    transition-duration: 0.5s;
+  }
+`;
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -30,25 +32,9 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <div className="relative inline-block group">
-      {leftIcon && (
-        <InlineIcon
-          color={color}
-          icon={leftIcon}
-          type="button"
-          direction="left"
-          outlined={outlined}
-        />
-      )}
-      {rightIcon && (
-        <InlineIcon
-          color={color}
-          icon={rightIcon}
-          type="button"
-          direction="right"
-          outlined={outlined}
-        />
-      )}
+    <Container className="relative inline-block group">
+      {leftIcon && <InlineIcon icon={leftIcon} direction="left" />}
+      {rightIcon && <InlineIcon icon={rightIcon} direction="right" />}
 
       <button
         {...rest}
@@ -66,12 +52,16 @@ export const Button: React.FC<ButtonProps> = ({
           { "hover:text-white border-2": outlined },
 
           {
-            "bg-primary hover:bg-primary-400": color === "primary" && !outlined,
-            "bg-secondary hover:bg-secondary-400":
+            "bg-gradient-to-br from-primary to-primary-700 hover:bg-gradient-to-tl":
+              color === "primary" && !outlined,
+            "bg-gradient-to-br from-secondary to-secondary-700 hover:bg-gradient-to-tl":
               color === "secondary" && !outlined,
-            "bg-error hover:bg-error-400": color === "error" && !outlined,
-            "bg-success hover:bg-success-400": color === "success" && !outlined,
-            "bg-warning hover:bg-warning-400": color === "warning" && !outlined,
+            "bg-gradient-to-br from-error to-error-700 hover:bg-gradient-to-tl":
+              color === "error" && !outlined,
+            "bg-gradient-to-br from-success to-success-700 hover:bg-gradient-to-tl":
+              color === "success" && !outlined,
+            "bg-gradient-to-br from-warning to-warning-700 hover:bg-gradient-to-tl":
+              color === "warning" && !outlined,
           },
 
           {
@@ -93,7 +83,7 @@ export const Button: React.FC<ButtonProps> = ({
       >
         {children}
       </button>
-    </div>
+    </Container>
   );
 };
 
