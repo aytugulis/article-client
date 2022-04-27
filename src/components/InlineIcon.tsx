@@ -11,5 +11,5 @@ export const InlineIcon: React.FC<InlineIconProps> = ({ icon, direction }) => {
     { "left-2": direction === "left", "right-2": direction === "right" }
   );
 
-  return <div className={classes}>{icon}</div>;
+  return <span className={classes}>{icon}</span>;
 };
