@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-around py-3 bg-primary">
+    <nav className="flex justify-around py-3 bg-gradient-to-r from-primary-600 via-primary  to-primary-600">
       <Link to="/">
         <div className="flex items-center gap-1">
           <Horse className="text-white" weight="fill" size={30} />

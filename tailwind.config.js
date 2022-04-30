@@ -25,7 +25,7 @@ module.exports = {
     extend: {
       colors: {
         primary: polish("#11468F"),
-        secondary: polish("#F3C892"),
+        secondary: polish("#E4D1B9"),
         error: polish("#B8405E"),
         success: polish("#219F94"),
         warning: polish("#FF9F45"),

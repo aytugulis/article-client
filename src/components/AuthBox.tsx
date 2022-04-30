@@ -1,14 +1,10 @@
 import React from "react";
 
-interface AuthBoxProps {
-  children: React.ReactNode;
-}
+type AuthBoxProps = React.PropsWithChildren<{}>;
 export const AuthBox: React.FC<AuthBoxProps> = ({ children }) => {
   return (
-    <div className="flex justify-center">
-      <div className="mt-8 w-[475px] h-[525px] bg-gray-100 shadow-md text-center rounded border-l-8 border-secondary py-16">
-        {children}
-      </div>
+    <div className="flex justify-center items-center min-h-full">
+      <form className="flex flex-col gap-5 items-center">{children}</form>
     </div>
   );
 };
