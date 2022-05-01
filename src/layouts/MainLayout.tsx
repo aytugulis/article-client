@@ -7,8 +7,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="grow grid bg-gray-100">{children}</main>
-      <footer>FOOOTER</footer>
+      <main className="grow grid bg-gray-300">{children}</main>
+      <footer className="flex justify-center py-2 bg-primary-700 text-white">
+        FOOTER
+      </footer>
     </div>
   );
 };

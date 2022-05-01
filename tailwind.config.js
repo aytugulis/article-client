@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 const { darken, lighten } = require("polished");
 
 function polish(color) {
-  const multiplier = 0.1;
+  const multiplier = 0.05;
   return {
     100: lighten(multiplier * 4, color),
     200: lighten(multiplier * 3, color),

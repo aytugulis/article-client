@@ -1,4 +1,4 @@
-import { ArrowRight, At, Password } from "phosphor-react";
+import { Fingerprint, At, Password } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { AuthBox } from "../components/AuthBox";
 import { Button } from "../components/Button";
@@ -9,17 +9,17 @@ export const LoginPage = () => {
     <AuthBox>
       <h2 className="text-2xl font-bold tracking-wide">WELCOME AGAIN</h2>
       <TextInput
-        leftIcon={<At size={26} className="text-gray-500" />}
+        leftIcon={<At size={24} className="text-gray-500" />}
         placeholder="Enter your email"
       />
       <TextInput
-        leftIcon={<Password size={26} className="text-gray-500" />}
+        leftIcon={<Password size={24} className="text-gray-500" />}
         placeholder="Enter your password"
       />
 
       <Button
-        leftIcon={<ArrowRight size={26} className="text-white" />}
-        color="primary"
+        leftIcon={<Fingerprint size={24} className="text-white" />}
+        color="secondary"
       >
         Login
       </Button>

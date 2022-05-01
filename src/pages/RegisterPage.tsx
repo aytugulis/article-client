@@ -1,4 +1,4 @@
-import { ArrowRight, At, IdentificationCard, Password } from "phosphor-react";
+import { Lock, At, IdentificationCard, Password } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { AuthBox } from "../components/AuthBox";
 import { Button } from "../components/Button";
@@ -9,21 +9,21 @@ export const RegisterPage = () => {
     <AuthBox>
       <h2 className="text-2xl font-bold tracking-wide">JOIN US</h2>
       <TextInput
-        leftIcon={<IdentificationCard size={26} className="text-gray-500" />}
+        leftIcon={<IdentificationCard size={24} className="text-gray-500" />}
         placeholder="Enter a name"
       />
       <TextInput
-        leftIcon={<At size={26} className="text-gray-500" />}
+        leftIcon={<At size={24} className="text-gray-500" />}
         placeholder="Enter an email"
       />
       <TextInput
-        leftIcon={<Password size={26} className="text-gray-500" />}
+        leftIcon={<Password size={24} className="text-gray-500" />}
         placeholder="Enter a password"
       />
 
       <Button
-        leftIcon={<ArrowRight size={26} className="text-white" />}
-        color="primary"
+        leftIcon={<Lock size={24} className="text-white" />}
+        color="secondary"
       >
         Register
       </Button>
