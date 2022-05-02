@@ -26,7 +26,7 @@ export const LoginPage = () => {
         Login
       </Button>
       <Link to="/register">
-        <p className="text-sm font-medium text-primary-900 duration-300 hover:text-tropical-blue-400 underline mt-2">
+        <p className="text-sm font-medium text-tropical-blue-500 duration-300 hover:text-tropical-blue-400 underline mt-2">
           Do not you have an account ? Join us.
         </p>
       </Link>
