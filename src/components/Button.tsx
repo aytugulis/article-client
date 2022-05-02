@@ -1,5 +1,5 @@
 import cx from "classnames";
-import { ColorVariant, SizeVariant } from "../type/Variant";
+import { Variant, Size } from "../type/Variant";
 import { InlineIcon } from "./InlineIcon";
 import styled from "styled-components";
 
@@ -10,8 +10,8 @@ interface ButtonProps
   > {
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
-  color: ColorVariant;
-  size?: Exclude<SizeVariant, "xlg" | "xsm">;
+  color: Variant;
+  size?: Exclude<Size, "xl" | "xs">;
   outlined?: boolean;
 }
 
@@ -56,12 +56,12 @@ export const Button: React.FC<ButtonProps> = ({
               color === "primary" && !outlined,
             "bg-gradient-to-br from-secondary to-secondary-700 hover:bg-gradient-to-tl":
               color === "secondary" && !outlined,
-            "bg-gradient-to-br from-error to-error-700 hover:bg-gradient-to-tl":
-              color === "error" && !outlined,
-            "bg-gradient-to-br from-success to-success-700 hover:bg-gradient-to-tl":
-              color === "success" && !outlined,
-            "bg-gradient-to-br from-warning to-warning-700 hover:bg-gradient-to-tl":
-              color === "warning" && !outlined,
+            "bg-gradient-to-br from-red to-red-700 hover:bg-gradient-to-tl":
+              color === "red" && !outlined,
+            "bg-gradient-to-br from-tropical-blue to-tropical-blue-700 hover:bg-gradient-to-tl":
+              color === "tropical-blue" && !outlined,
+            "bg-gradient-to-br from-yellow to-yellow-700 hover:bg-gradient-to-tl":
+              color === "yellow" && !outlined,
           },
 
           {
@@ -69,12 +69,11 @@ export const Button: React.FC<ButtonProps> = ({
               color === "primary" && outlined,
             "text-secondary border-secondary hover:bg-secondary":
               color === "secondary" && outlined,
-            "text-error border-error hover:bg-error":
-              color === "error" && outlined,
-            "text-success border-success hover:bg-success":
-              color === "success" && outlined,
-            "text-warning border-warning hover:bg-warning":
-              color === "warning" && outlined,
+            "text-red border-red hover:bg-red": color === "red" && outlined,
+            "text-tropical-blue border-tropical-blue hover:bg-tropical-blue":
+              color === "tropical-blue" && outlined,
+            "text-yellow border-yellow hover:bg-yellow":
+              color === "yellow" && outlined,
           },
 
           { "pl-10": leftIcon, "pr-10": rightIcon },

@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 const { darken, lighten } = require("polished");
 
 function polish(color) {
-  const multiplier = 0.05;
+  const multiplier = 0.06;
   return {
     100: lighten(multiplier * 4, color),
     200: lighten(multiplier * 3, color),
@@ -17,6 +17,16 @@ function polish(color) {
   };
 }
 
+const defaultColors = {};
+for (const key in colors) {
+  if (Object.hasOwnProperty.call(colors, key)) {
+    const element = colors[key];
+    if (typeof element === "object") {
+      defaultColors[key] = { DEFAULT: element["500"] };
+    }
+  }
+}
+
 module.exports = {
   mode: "jit",
   purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
@@ -24,11 +34,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: polish("#11468F"),
-        secondary: polish("#E4D1B9"),
-        error: polish("#B8405E"),
-        success: polish("#219F94"),
-        warning: polish("#FF9F45"),
+        primary: polish("#148F72"),
+        secondary: polish("#FA7365"),
+        "tropical-blue": polish("#6478D5"),
+        ...defaultColors,
       },
     },
   },

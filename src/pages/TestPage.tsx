@@ -6,12 +6,14 @@ export const TestPage = () => {
   return (
     <div>
       <TextInput
-        leftIcon={<Horse className="text-success" weight="fill" size={32} />}
+        leftIcon={
+          <Horse className="text-tropical-blue" weight="fill" size={32} />
+        }
         rightIcon={<Heart className="text-primary" weight="fill" size={32} />}
         placeholder="Type a name"
       />
       <Button
-        color="success"
+        color="tropical-blue"
         size="lg"
         leftIcon={<Heart className="text-white" weight="fill" size={28} />}
         rightIcon={<Heart className="text-white" weight="fill" size={28} />}
@@ -19,7 +21,7 @@ export const TestPage = () => {
         Normal
       </Button>
       <Button
-        color="error"
+        color="red"
         size="md"
         leftIcon={<Heart className="text-white" weight="fill" size={28} />}
       >
@@ -47,12 +49,12 @@ export const TestPage = () => {
         Outlined
       </Button>
       <Button
-        color="warning"
+        color="yellow"
         size="lg"
         outlined
         rightIcon={
           <Heart
-            className="text-warning group-hover:text-white"
+            className="text-yellow group-hover:text-white"
             weight="fill"
             size={32}
           />
@@ -61,7 +63,7 @@ export const TestPage = () => {
         Outlined
       </Button>
       <Button color="primary">Outlined</Button>
-      <Button color="warning">Outlined</Button>
+      <Button color="yellow">Outlined</Button>
       <Button color="secondary">Outlined</Button>
     </div>
   );

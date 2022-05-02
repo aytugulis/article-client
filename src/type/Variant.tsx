@@ -1,8 +1,8 @@
-export type ColorVariant =
+export type Variant =
   | "primary"
   | "secondary"
-  | "error"
-  | "success"
-  | "warning";
+  | "tropical-blue"
+  | "red"
+  | "yellow";
 
-export type SizeVariant = "xsm" | "sm" | "md" | "lg" | "xlg";
+export type Size = "xs" | "sm" | "md" | "lg" | "xl";

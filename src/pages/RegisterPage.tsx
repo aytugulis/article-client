@@ -28,7 +28,7 @@ export const RegisterPage = () => {
         Register
       </Button>
       <Link to="/login">
-        <p className="text-sm font-medium text-success-500 duration-300 hover:text-success-400 underline mt-2">
+        <p className="text-sm font-medium text-tropical-blue-500 duration-300 hover:text-tropical-blue-400 underline mt-2">
           Do you already have an account ? Login.
         </p>
       </Link>
