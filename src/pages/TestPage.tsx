@@ -1,4 +1,5 @@
 import { Heart, Horse } from "phosphor-react";
+import { Badge } from "../components/Badge";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 
@@ -65,6 +66,10 @@ export const TestPage = () => {
       <Button color="primary">Outlined</Button>
       <Button color="yellow">Outlined</Button>
       <Button color="secondary">Outlined</Button>
+      <Badge color="primary">Follow</Badge>
+      <Badge color="tropical-blue">asd</Badge>
+      <Badge color="red">asdasdasdasd</Badge>
+      <Badge color="yellow">asdaasdasdasdasdasdasd</Badge>
     </div>
   );
 };

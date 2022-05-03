@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar } from "./Avatar";
+import { Badge } from "./Badge";
 import { Button } from "./Button";
 
 interface WriterCardProps {
@@ -16,11 +17,13 @@ export const WriterCard: React.FC<WriterCardProps> = ({
   return (
     <li className="flex flex-col items-center basis-full md:basis-1/3 p-5 gap-1">
       <Avatar imageUrl={profileImage} size="lg" />
-      <span className="font-medium text-lg text-gray-700">{fullName}</span>
+      <div className="flex items-center gap-1">
+        <span className="font-medium text-lg text-gray-700">{fullName}</span>
+        <Badge className="cursor-pointer" color="secondary">
+          More
+        </Badge>
+      </div>
       <p>{description}</p>
-      <Button color="secondary" size="sm">
-        More
-      </Button>
     </li>
   );
 };
