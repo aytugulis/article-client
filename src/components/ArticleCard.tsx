@@ -1,3 +1,4 @@
+import { Heart } from "phosphor-react";
 import React from "react";
 import { Avatar } from "./Avatar";
 
@@ -6,7 +7,7 @@ interface ArticleCardProps {
   fullName: string;
   header: string;
   date: string;
-  readingMinutes: string;
+  likes: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -14,7 +15,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   fullName,
   header,
   date,
-  readingMinutes,
+  likes,
 }) => {
   return (
     <li className="lg:basis-1/3 basis-1/2 py-5 flex flex-col items-center">
@@ -25,9 +26,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
 
         <p className="font-medium text-lg">{header}</p>
-        <p className="text-sm font-light">
-          {date} - {readingMinutes} min read
-        </p>
+        <div className="flex gap-3">
+          <p className="text-sm font-light">{date}</p>
+          <Heart size={20} />
+        </div>
       </div>
     </li>
   );

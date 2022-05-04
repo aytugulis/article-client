@@ -22,10 +22,10 @@ export const Avatar: React.FC<AvatarProps> = ({
         "rounded-full inline-block border-2 border-white",
         {
           "w-6": size === "xs",
-          "w-10": size === "sm",
-          "w-14": size === "md",
-          "w-20": size === "lg",
-          "w-24": size === "xl",
+          "w-8": size === "sm",
+          "w-12": size === "md",
+          "w-16": size === "lg",
+          "w-20": size === "xl",
         },
         className
       )}
