@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { TestPage } from "./pages/TestPage";
 import { MainLayout } from "./layouts/MainLayout";
+import { EditProfilePage } from "./pages/EditProfilePage";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/test" element={<TestPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/edit-profile" element={<EditProfilePage />} />
         </Routes>
       </MainLayout>
     </Router>
