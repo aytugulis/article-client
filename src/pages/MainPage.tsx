@@ -14,6 +14,7 @@ export const MainPage = () => {
         icon={<Book weight="fill" size={20} />}
         title="Trend Articles"
       />
+
       <section className="flex">
         <SectionHeader
           className="hidden lg:flex"
@@ -22,6 +23,7 @@ export const MainPage = () => {
         />
         <ArticleCardList />
       </section>
+
       <section className="flex flex-col items-center">
         <SectionHeader
           icon={<User weight="fill" size={20} />}

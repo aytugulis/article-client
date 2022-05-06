@@ -8,13 +8,13 @@ import {
   ArrowUp,
 } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { AuthBox } from "../components/AuthBox";
+import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 
 export const EditProfilePage: React.FC = () => {
   return (
-    <AuthBox>
+    <FormBox>
       <h2 className="text-2xl font-bold tracking-wide">Edit Profile</h2>
       <TextInput
         leftIcon={<IdentificationCard size={24} className="text-gray-500" />}
@@ -35,6 +35,6 @@ export const EditProfilePage: React.FC = () => {
       >
         Update
       </Button>
-    </AuthBox>
+    </FormBox>
   );
 };

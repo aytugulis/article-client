@@ -1,12 +1,12 @@
 import { Fingerprint, At, Password } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { AuthBox } from "../components/AuthBox";
+import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 
 export const LoginPage = () => {
   return (
-    <AuthBox>
+    <FormBox>
       <h2 className="text-2xl font-bold tracking-wide text-primary-900">
         WELCOME AGAIN
       </h2>
@@ -30,6 +30,6 @@ export const LoginPage = () => {
           Do not you have an account ? Join us.
         </p>
       </Link>
-    </AuthBox>
+    </FormBox>
   );
 };

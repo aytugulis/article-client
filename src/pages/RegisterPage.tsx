@@ -1,12 +1,12 @@
 import { Lock, At, IdentificationCard, Password } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { AuthBox } from "../components/AuthBox";
+import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 
 export const RegisterPage = () => {
   return (
-    <AuthBox>
+    <FormBox>
       <h2 className="text-2xl font-bold tracking-wide">JOIN US</h2>
       <TextInput
         leftIcon={<IdentificationCard size={24} className="text-gray-500" />}
@@ -32,6 +32,6 @@ export const RegisterPage = () => {
           Do you already have an account ? Login.
         </p>
       </Link>
-    </AuthBox>
+    </FormBox>
   );
 };

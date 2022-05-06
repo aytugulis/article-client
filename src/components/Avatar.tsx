@@ -25,7 +25,7 @@ export const Avatar: React.FC<AvatarProps> = ({
           "w-8": size === "sm",
           "w-12": size === "md",
           "w-16": size === "lg",
-          "w-20": size === "xl",
+          "w-24": size === "xl",
         },
         className
       )}

@@ -5,6 +5,9 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { TestPage } from "./pages/TestPage";
 import { MainLayout } from "./layouts/MainLayout";
 import { EditProfilePage } from "./pages/EditProfilePage";
+import { CreateArticlePage } from "./pages/CreateArticlePage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { ArticlePage } from "./pages/ArticlePage";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/edit-profile" element={<EditProfilePage />} />
+          <Route path="/create-article" element={<CreateArticlePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MainLayout>
     </Router>
