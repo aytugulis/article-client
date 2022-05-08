@@ -6,8 +6,8 @@ import { SectionHeader } from "../components/SectionHeader";
 
 export const ProfilePage: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-evenly">
-      <div className="flex flex-col items-center gap-1">
+    <div className="flex flex-col items-center my-10 gap-5">
+      <div className="flex flex-col items-center gap-1 p-2">
         <Avatar
           size="xl"
           imageUrl="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"

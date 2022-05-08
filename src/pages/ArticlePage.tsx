@@ -1,62 +1,71 @@
-import { ThumbsUp } from "phosphor-react";
+import { Book, ThumbsUp } from "phosphor-react";
 import React from "react";
+import { Link } from "react-router-dom";
+import { ArticleCardList } from "../components/ArticleCardList";
 import { Avatar } from "../components/Avatar";
+import { SectionHeader } from "../components/SectionHeader";
 
 export const ArticlePage: React.FC = () => {
   return (
-    <div className="flex flex-col items-center gap-8 m-10">
-      <div className="flex flex-col items-center gap-1">
+    <div className="flex flex-col items-center my-10 gap-5">
+      <Link
+        to="/profile/:id"
+        className="flex flex-col items-center gap-1 duration-300 rounded hover:bg-gray-400 p-2"
+      >
         <Avatar
           size="xl"
           imageUrl="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
         />
-        <p>Aytuğ Ulış</p>
+        <p className="font-medium text-lg">Aytuğ Ulış</p>
+        <p>I am a software developer</p>
+      </Link>
 
-        <div className="flex items-center w-5/6">
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center w-3/5 justify-center">
           <h2 className="font-bold text-2xl text-center">
-            Lorem ipsum dolor sit ametasasa consectetur adipisicing elit.
-            Consectetur sunt quam mollitiaasasaasasasasasas officiisasasasas
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, at
+            architecto temporibus libero magni voluptatem.
           </h2>
           <ThumbsUp size={50} className="cursor-pointer hover:text-secondary" />
         </div>
+        <p className=" w-5/6 text-xl leading-8 tracking-wider">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+          distinctio ipsa accusantium facere laudantium eos, excepturi amet
+          eveniet consequuntur? Esse facere, dolorem dolor quidem saepe nihil.
+          Maxime pariatur dolores reprehenderit impedit ratione iure iste nisi
+          aut suscipit totam deserunt cum illo sed mollitia minus ad error nulla
+          fugit temporibus, autem amet optio nam possimus vero? Nesciunt
+          voluptas mollitia nobis, id, quo praesentium delectus voluptatum eaque
+          blanditiis ducimus atque! Assumenda enim aliquam consequatur veritatis
+          atque at, in molestias asperiores impedit reprehenderit et porro ipsam
+          eos doloremque nesciunt doloribus. Expedita excepturi voluptatibus
+          ipsum rerum nostrum recusandae nemo, minima ipsam deserunt assumenda
+          maiores modi sed cupiditate laboriosam nam maxime, non voluptatem
+          repudiandae tenetur exercitationem velit. Debitis praesentium officiis
+          quod, inventore perferendis distinctio quia, dolores provident et
+          facilis sapiente facere delectus odit esse. Eos sunt iste in,
+          blanditiis quidem itaque neque numquam culpa explicabo! Aperiam
+          nesciunt earum corporis sunt eligendi quibusdam eius labore dolorem
+          quas eveniet modi sit unde soluta exercitationem impedit repellat
+          commodi pariatur, doloremque error. Animi, in sequi illo quas, illum
+          necessitatibus hic consequatur saepe optio ab, inventore nulla. Cum
+          officia eveniet minima, maxime, neque magni consectetur placeat
+          molestiae suscipit et ratione labore dolores quas velit, quae a in
+          maiores culpa fugiat numquam? Incidunt numquam molestiae excepturi
+          omnis officia itaque modi eum eveniet quae aut temporibus rem dolore
+          perferendis alias sed, non ab veniam consequatur atque reprehenderit
+          praesentium autem? Facilis ut veniam esse non cupiditate odio maiores
+          deserunt soluta explicabo animi suscipit qui ducimus cum, blanditiis
+          officiis repellat eligendi nesciunt dicta laudantium.
+        </p>
       </div>
-
-      <p className=" w-5/6 text-xl leading-8 tracking-wider">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, commodi
-        impedit soluta nemo obcaecati dolorem placeat ratione mollitia eos unde
-        ea suscipit autem nobis alias animi vero eius dolores quis magnam
-        adipisci provident illum dolor natus at? Eligendi odit cumque voluptas
-        voluptatum enim a, ratione labor e laboriosam, saepe voluptatibus natus
-        illum mollitia quae, laudantium possimus distinctio animi beatae
-        expedita ipsam. Tenetur, error mollitia. Eveniet ad voluptatibus
-        assumenda aliquid dicta, facere, error ducimus similique quidem
-        perspiciatis tempore excepturi quo et iusto autem repellat nobis
-        provident necessitatibus minus! Esse quod impedi
-        <br />
-        <br /> ut eveniet temporibus repellendus ipsum laboriosam! Ducimus
-        pariatur error, odio sit soluta quidem asperiores minus officia ut
-        dignissimos. Sunt hic laudantium autem ipsam illo numquam aperiam libero
-        explicabo inventore aliquid, cumque provident, culpa, fugit quas simili
-        <br />
-        <br />
-        que natus tempore. Iure dicta in officia nam maiores necessitatibus
-        aspernatur sapiente adipisci animi eligendi impedit voluptatem magni
-        assumenda, atque quisquam enim minima molestias quasi nisi temporibus.
-        Quam non obcaecati labore facilis assumenda libero, in sint porro unde
-        deleniti officia ullam? Suscipit, quod nostrum! Voluptates eaque ad quas
-        tempore commodi quasi id ratione facere maiores vitae, quia possimus?
-        <br />
-        <br />
-        Dolorem placeat quidem voluptas ad laudantium animi ullam quae, ab atque
-        quibusdam esse recusandae repellat omnis, fugiat est necessitatibus
-        autem illum eveniet minima vitae aut? Nemo facere dolores dolorum libero
-        similique eveniet vitae suscipit consectetur beatae, illum alias ut ad
-        laudantium placeat modi provident eum quo, incidunt repellat excepturi
-        numquam iusto.
-        <br /> Expedita esse incidunt recusandae error facere fugiat ea
-        cupiditate, obcaecati laudantium temporibus saepe tempore unde vitae
-        nostrum aliquam voluptas non. Accusamus, est.
-      </p>
+      <div className="flex flex-col items-center gap-1">
+        <SectionHeader
+          icon={<Book weight="fill" size={20} />}
+          title="Trend Articles"
+        />
+        <ArticleCardList />
+      </div>
     </div>
   );
 };

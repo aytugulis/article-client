@@ -19,7 +19,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={cx("flex items-center gap-1 text-red-900", className)}>
       {icon}
-      <h2 className="text-xl font-semibold">{title}</h2>
+      <h2 className="text-md xl:text-xl font-semibold">{title}</h2>
     </div>
   );
 };

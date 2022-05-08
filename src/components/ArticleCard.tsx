@@ -8,7 +8,6 @@ interface ArticleCardProps {
   fullName: string;
   header: string;
   date: string;
-  likes: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -16,15 +15,19 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   fullName,
   header,
   date,
-  likes,
 }) => {
   return (
-    <li className="flex flex-col items-center lg:basis-1/3 basis-1/2 py-5">
-      <Link
-        to="/article/:id"
-        className="p-3 duration-300 rounded hover:bg-gray-400"
-      >
-        <div className="flex items-center gap-2 ">
+    <Link
+      to="/article/:id"
+      className="flex flex-col lg:flex-row justify-center gap-x-5 gap-y-2 items-center lg:basis-1/3 md:basis-1/2 basis-full py-4 cursor-pointer duration-300 rounded hover:bg-gray-400"
+    >
+      <img
+        className="w-[144px] h-[81px] object-cover"
+        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+        alt="article image"
+      />
+      <div className="flex flex-col gap-1 items-center lg:items-start">
+        <div className="flex items-center gap-2">
           <Avatar imageUrl={profileImage} size="xs" />
           <span className="font-medium text-gray-700">{fullName}</span>
         </div>
@@ -34,7 +37,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <p className="text-sm font-light">{date}</p>
           <Heart size={20} />
         </div>
-      </Link>
-    </li>
+      </div>
+    </Link>
   );
 };
