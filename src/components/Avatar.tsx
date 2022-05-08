@@ -19,7 +19,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   return (
     <img
       className={cx(
-        "rounded-full inline-block border-2 border-white",
+        "rounded-full inline-block border-[3px] border-gray",
         {
           "w-6": size === "xs",
           "w-8": size === "sm",

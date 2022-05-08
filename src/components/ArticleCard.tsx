@@ -22,8 +22,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       className="flex flex-col lg:flex-row justify-center gap-x-5 gap-y-2 items-center lg:basis-1/3 md:basis-1/2 basis-full py-4 cursor-pointer duration-300 rounded hover:bg-gray-400"
     >
       <img
-        className="w-[144px] h-[81px] object-cover"
-        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+        className="w-[288px] h-[162px] lg:w-[160px] lg:h-[90px] object-cover"
+        src="https://c4.wallpaperflare.com/wallpaper/655/150/358/3-316-16-9-aspect-ratio-s-sfw-wallpaper-preview.jpg"
         alt="article image"
       />
       <div className="flex flex-col gap-1 items-center lg:items-start">

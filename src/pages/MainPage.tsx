@@ -2,6 +2,7 @@ import { User, Book } from "phosphor-react";
 import { ArticleCardList } from "../components/ArticleCardList";
 import { WriterList } from "../components/WriterList";
 import { SectionHeader } from "../components/SectionHeader";
+import { Loading } from "../components/Loading";
 
 export const MainPage = () => {
   return (
