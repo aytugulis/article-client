@@ -3,7 +3,7 @@ import { Member } from "./Member";
 import { NonMember } from "./NonMember";
 
 export const Navbar = () => {
-  const cond = false;
+  const cond = true;
 
   return (
     <nav className="flex justify-around py-3 bg-gradient-to-r from-primary-700 via-primary-400  to-primary-700">

@@ -1,10 +1,39 @@
 @tailwind base;
 
 @layer base {
-    body {
-        @apply text-primary-900
-    }
+  body {
+    @apply text-primary-900;
+  }
 }
 
 @tailwind components;
 @tailwind utilities;
+
+.quill > .ql-toolbar:first-child {
+  display: none;
+}
+
+.quill {
+  width: 100vh;
+  background-color: whitesmoke;
+}
+
+.ql-container {
+  height: 250px !important;
+}
+
+.ql-toolbar {
+  background-color: lightsteelblue;
+}
+
+@media screen and (max-width: 960px) {
+  .quill {
+    width: 60vh;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .quill {
+    width: 40vh;
+  }
+}

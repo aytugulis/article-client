@@ -1,10 +1,11 @@
-import { Fingerprint, At, Password, Plus, TextH } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Plus, TextH } from "phosphor-react";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { CheckBox } from "../components/CheckBox";
+
 import styled from "styled-components";
+import { HtmlEditor } from "../components/HtmlEditor";
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +24,11 @@ export const CreateArticlePage = () => {
         Create an Article
       </h2>
       <TextInput
-        leftIcon={<TextH size={24} className="text-gray-500" />}
+        leftIcon={<TextH size={24} className="text-tropical-blue" />}
         placeholder="Enter a header"
       />
       <input type="file" />
-      <textarea>Example</textarea>
+      <HtmlEditor />
       <div className="flex flex-col items-center lg:flex-row gap-1">
         <h3 className="font-semibold">Categories</h3>
         <Container>
@@ -41,7 +42,7 @@ export const CreateArticlePage = () => {
       </div>
       <Button
         rightIcon={<Plus size={24} className="text-white" />}
-        color="secondary"
+        color="tropical-blue"
       >
         Create
       </Button>
