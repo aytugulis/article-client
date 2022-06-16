@@ -67,7 +67,7 @@ const queryClient = new QueryClient({
     queries: {
       queryFn,
       onError: (error: any) => toast.error(error?.message),
-      onSuccess: () => toast.success("success"),
+      /*       onSuccess: () => toast.success("success"), */
     },
     mutations: {
       mutationFn,

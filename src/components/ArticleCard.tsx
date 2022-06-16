@@ -5,15 +5,19 @@ import { Avatar } from "./Avatar";
 
 interface ArticleCardProps {
   profileImage: string;
+  imageUrl: string;
   fullName: string;
+  category: string;
   header: string;
   date: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
+  imageUrl,
   profileImage,
   fullName,
   header,
+  category,
   date,
 }) => {
   return (
@@ -22,8 +26,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       className="flex flex-col lg:flex-row justify-center gap-x-5 gap-y-2 items-center lg:basis-1/3 md:basis-1/2 basis-full py-4 cursor-pointer duration-300 rounded hover:bg-gray-400"
     >
       <img
-        className="w-[288px] h-[162px] lg:w-[160px] lg:h-[90px] object-cover"
-        src="https://c4.wallpaperflare.com/wallpaper/655/150/358/3-316-16-9-aspect-ratio-s-sfw-wallpaper-preview.jpg"
+        className="w-[288px] h-[162px] lg:w-[208px] lg:h-[117px] object-cover"
+        src={imageUrl}
         alt="article image"
       />
       <div className="flex flex-col gap-1 items-center lg:items-start">
@@ -33,8 +37,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
 
         <p className="font-medium text-lg">{header}</p>
+        <p className="font-medium text-tropical-blue-600">{category}</p>
         <div className="flex gap-3">
-          <p className="text-sm font-light">{date}</p>
+          <p className="text-sm font-light">{date.slice(0, 10)}</p>
           <Heart size={20} />
         </div>
       </div>

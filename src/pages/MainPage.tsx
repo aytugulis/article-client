@@ -2,7 +2,6 @@ import { User, Book } from "phosphor-react";
 import { ArticleCardList } from "../components/ArticleCardList";
 import { WriterList } from "../components/WriterList";
 import { SectionHeader } from "../components/SectionHeader";
-import { Loading } from "../components/Loading";
 
 export const MainPage = () => {
   return (
@@ -11,7 +10,7 @@ export const MainPage = () => {
       <section className="flex flex-col items-center gap-1">
         <SectionHeader
           icon={<Book weight="fill" size={20} />}
-          title="Trend Articles"
+          title="Last Articles"
         />
         <ArticleCardList />
       </section>

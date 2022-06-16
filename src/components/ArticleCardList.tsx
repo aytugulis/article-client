@@ -1,45 +1,33 @@
 import React from "react";
 import { ArticleCard } from "./ArticleCard";
+import { Loading } from "../components/Loading";
+import { useQuery } from "react-query";
+import { Endpoints } from "../type/Endpoints";
+import { Article } from "../type/Article";
 
 export const ArticleCardList: React.FC = () => {
+  const { data, isLoading } = useQuery<{ articles: Article[] }, Error>([
+    Endpoints.getArticles,
+    { queryObject: { limit: 6 } },
+  ]);
+
   return (
-    <ul className="flex items-center flex-wrap gap-y-4 mx-5 w-4/5">
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-      <ArticleCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        header="Header of an article"
-        date="05-01-2022"
-      />
-    </ul>
+    <>
+      {isLoading && <Loading />}
+      <ul className="flex items-center flex-wrap gap-y-4 mx-5 w-4/5">
+        {data?.articles?.map(
+          ({ imageUrl, header, author, createdAt, category }) => (
+            <ArticleCard
+              imageUrl={imageUrl}
+              category={category}
+              profileImage={author.imageUrl}
+              fullName={author.name}
+              header={header}
+              date={createdAt}
+            />
+          )
+        )}
+      </ul>
+    </>
   );
 };
