@@ -1,23 +1,29 @@
+import { useQuery } from "react-query";
+import { Endpoints } from "../type/Endpoints";
+import { GetTopAuthors } from "../type/ServiceResponse";
+import { Loading } from "./Loading";
 import { WriterCard } from "./WriterCard";
 
 export const WriterList = () => {
+  const { data, isLoading } = useQuery<GetTopAuthors, Error>([
+    Endpoints.getTopAuthors,
+    { queryObject: { limit: 6 } },
+  ]);
   return (
-    <ul className="flex items-center flex-wrap">
-      <WriterCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        description="Description of the writer."
-      />
-      <WriterCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        description="Description of the writer."
-      />
-      <WriterCard
-        profileImage="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
-        fullName="Aytuğ Ulış"
-        description="Description of the writer."
-      />
-    </ul>
+    <>
+      {isLoading && <Loading />}
+      <ul className="flex items-center flex-wrap">
+        {data?.topAuthors.map(({ author }) => (
+          <WriterCard
+            key={author._id}
+            profileImage={author.imageUrl}
+            fullName={author.name}
+            description={author.description}
+          />
+        ))}
+      </ul>
+    </>
   );
+
+  return <>asd</>;
 };
