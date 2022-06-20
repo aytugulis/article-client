@@ -6,19 +6,21 @@ import { Button } from "./Button";
 
 interface WriterCardProps {
   profileImage: string;
+  id: string;
   fullName: string;
   description: string;
 }
 
 export const WriterCard: React.FC<WriterCardProps> = ({
   profileImage,
+  id,
   fullName,
   description,
 }) => {
   return (
     <li className="flex flex-col basis-full md:basis-1/3 p-5 gap-1">
       <Link
-        to="/profile/:id"
+        to={`/profile/${id}`}
         className="flex flex-col items-center p-3 duration-300 rounded hover:bg-gray-400"
       >
         <Avatar imageUrl={profileImage} size="lg" />

@@ -1,14 +1,10 @@
-import { useQuery } from "react-query";
-import { Endpoints } from "../type/Endpoints";
-import { GetTopAuthors } from "../type/ServiceResponse";
+import { useTopAuthors } from "../hooks/useTopAuthors";
 import { Loading } from "./Loading";
 import { WriterCard } from "./WriterCard";
 
 export const WriterList = () => {
-  const { data, isLoading } = useQuery<GetTopAuthors, Error>([
-    Endpoints.getTopAuthors,
-    { queryObject: { limit: 6 } },
-  ]);
+  const { data, isLoading } = useTopAuthors();
+
   return (
     <>
       {isLoading && <Loading />}
@@ -16,6 +12,7 @@ export const WriterList = () => {
         {data?.topAuthors.map(({ author }) => (
           <WriterCard
             key={author._id}
+            id={author._id}
             profileImage={author.imageUrl}
             fullName={author.name}
             description={author.description}
@@ -24,6 +21,4 @@ export const WriterList = () => {
       </ul>
     </>
   );
-
-  return <>asd</>;
 };

@@ -10,6 +10,7 @@ interface ArticleCardProps {
   category: string;
   header: string;
   date: string;
+  id: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -19,10 +20,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   header,
   category,
   date,
+  id,
 }) => {
   return (
     <Link
-      to="/article/:id"
+      to={`/article/${id}`}
       className="flex flex-col lg:flex-row justify-center gap-x-5 gap-y-2 items-center lg:basis-1/3 md:basis-1/2 basis-full py-4 cursor-pointer duration-300 rounded hover:bg-gray-400"
     >
       <img
