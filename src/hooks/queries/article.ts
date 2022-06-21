@@ -18,10 +18,19 @@ interface GetArticles {
   totalPages: number;
   currentPage: number;
 }
-const getArticles = async (category?: Category) => {
+export interface GetArticlesProps {
+  page?: string;
+  limit?: string;
+  category?: string;
+  authorId?: string;
+}
+const getArticles = async (props: GetArticlesProps) => {
+  const { authorId, category, limit, page } = props;
   const queryString = new URLSearchParams({
-    limit: category ? "3" : "6",
+    page: page || "1",
+    limit: limit || "6",
     ...(category && { category }),
+    ...(authorId && { author: authorId }),
   });
 
   const { data } = await axiosClient.get(
@@ -29,6 +38,6 @@ const getArticles = async (category?: Category) => {
   );
   return data;
 };
-export function useArticles(category?: Category) {
-  return useQuery<GetArticles, Error>(["posts"], () => getArticles(category));
+export function useArticles(props: GetArticlesProps) {
+  return useQuery<GetArticles, Error>(["posts"], () => getArticles(props));
 }

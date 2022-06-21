@@ -4,4 +4,5 @@ export const Endpoint = {
   getArticles: "article",
   getArticle: (id: string) => `article/${id}`,
   getTopAuthors: "user/get-top-authors",
+  getOneUser: (id: string) => `user/${id}`,
 };
