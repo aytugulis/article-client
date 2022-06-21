@@ -1,10 +1,17 @@
 import React from "react";
 import { ArticleCard } from "./ArticleCard";
 import { Loading } from "../components/Loading";
-import { useArticles } from "../hooks/useArticles";
+import { useArticles } from "../hooks/queries/article";
+import { Category } from "../type/Article";
 
-export const ArticleCardList: React.FC = () => {
-  const { data, isLoading } = useArticles();
+interface ArticleCardListProps {
+  category?: Category;
+}
+
+export const ArticleCardList: React.FC<ArticleCardListProps> = ({
+  category,
+}) => {
+  const { data, isLoading } = useArticles(category);
 
   return (
     <>

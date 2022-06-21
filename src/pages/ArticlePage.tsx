@@ -5,7 +5,7 @@ import { ArticleCardList } from "../components/ArticleCardList";
 import { Avatar } from "../components/Avatar";
 import { Loading } from "../components/Loading";
 import { SectionHeader } from "../components/SectionHeader";
-import { useArticle } from "../hooks/useArticle";
+import { useArticle } from "../hooks/queries/article";
 
 export const ArticlePage: React.FC = () => {
   const { id } = useParams();
@@ -35,16 +35,16 @@ export const ArticlePage: React.FC = () => {
                 className="cursor-pointer hover:text-secondary"
               />
             </div>
-            <p className=" w-5/6 text-xl leading-8 tracking-wider">
+            <p className="w-5/6 text-xl leading-8 tracking-wider">
               {article.content}
             </p>
           </div>
           <div className="flex flex-col items-center gap-1">
             <SectionHeader
               icon={<Book weight="fill" size={20} />}
-              title="Trend Articles"
+              title="Other Similar Articles"
             />
-            <ArticleCardList />
+            <ArticleCardList category={article.category} />
           </div>
         </div>
       )}

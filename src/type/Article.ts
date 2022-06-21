@@ -1,21 +1,22 @@
 import { Author } from "./Author";
 
-export interface PopulatedArticle {
-  _id: string;
-  header: string;
-  content: string;
-  category: string;
-  imageUrl: string;
+export type Category =
+  | "Frontend"
+  | "Backend"
+  | "Fullstack"
+  | "Devops"
+  | "AI"
+  | "Data";
+
+export interface PopulatedArticle extends Omit<Article, "author"> {
   author: Omit<Author, "email" | "role">;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface Article {
   _id: string;
   header: string;
   content: string;
-  category: string;
+  category: Category;
   imageUrl: string;
   author: string;
   createdAt: string;

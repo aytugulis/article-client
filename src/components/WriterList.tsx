@@ -1,10 +1,9 @@
-import { useTopAuthors } from "../hooks/useTopAuthors";
+import { useTopAuthors } from "../hooks/queries/user";
 import { Loading } from "./Loading";
 import { WriterCard } from "./WriterCard";
 
 export const WriterList = () => {
   const { data, isLoading } = useTopAuthors();
-
   return (
     <>
       {isLoading && <Loading />}

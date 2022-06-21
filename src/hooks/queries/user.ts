@@ -1,17 +1,14 @@
-import { Endpoint } from "./../type/Endpoint";
+import { Endpoint } from "../../type/Endpoint";
 import { useQuery } from "react-query";
-import { axiosClient } from "../utils/client";
+import { axiosClient } from "../../utils/client";
+import { Author } from "../../type/Author";
 
+interface TopAuthor {
+  count: number;
+  author: Omit<Author, "email" | "role">;
+}
 interface GetTopAuthors {
-  topAuthors: {
-    count: number;
-    author: {
-      _id: string;
-      name: string;
-      description: string;
-      imageUrl: string;
-    };
-  }[];
+  topAuthors: TopAuthor[];
 }
 
 const getTopAuthors = async () => {
