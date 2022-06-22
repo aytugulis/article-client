@@ -11,13 +11,17 @@ import "react-quill/dist/quill.snow.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      onError: (error: any) => toast.error(error?.message),
+      onError: (error: any) => toast.error(error?.response?.data?.message),
       /*       onSuccess: () => toast.success("success"), */
     },
-    /*     mutations: {
-      onError: (error: any) => toast.error(error?.message),
-      onSuccess: () => toast.success("successs"),
-    }, */
+    mutations: {
+      onError: (error: any) => {
+        toast.error(error?.response?.data?.message);
+      },
+      onSuccess: () => {
+        toast.success("success");
+      },
+    },
   },
 });
 
