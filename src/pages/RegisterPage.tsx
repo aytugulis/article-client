@@ -1,13 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import { Lock, At, IdentificationCard, Password } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useRegister } from "../hooks/mutations/auth";
+import { useRegister, useSaveToken } from "../hooks/mutations/auth";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
-import { useToken } from "../hooks/useToken";
 
 export const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -15,8 +13,8 @@ export const RegisterPage = () => {
   const [description, setDescription] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data, mutate, isLoading, isSuccess } = useRegister();
-  useToken(data?.token);
+  const { data, mutate, isLoading } = useRegister();
+  useSaveToken(data);
 
   return (
     <>

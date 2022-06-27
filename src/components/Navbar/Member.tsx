@@ -1,12 +1,14 @@
 import { PencilLine } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useStore } from "../../store/zustand";
 import { Avatar } from "../Avatar";
 import { Badge } from "../Badge";
 import { ProfileMenu } from "./ProfileMenu";
 
 export const Member = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const userData = useStore((state) => state.userData);
 
   return (
     <ul className="flex items-center gap-3">
@@ -27,7 +29,10 @@ export const Member = () => {
       >
         <Avatar
           className="cursor-pointer"
-          imageUrl="https://media-exp1.licdn.com/dms/image/C5603AQH7CCKjPEEkZw/profile-displayphoto-shrink_800_800/0/1609592718275?e=1657756800&v=beta&t=wJ-lU3zGG8qkoAGx35tD6FEmoghu5NvW5EYhc7xBRzI"
+          imageUrl={
+            userData?.imageUrl ||
+            "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
+          }
           size="sm"
         />
         {isProfileOpen && <ProfileMenu />}

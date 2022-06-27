@@ -1,19 +1,18 @@
 import { Fingerprint, At, Password } from "phosphor-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useLogin } from "../hooks/mutations/auth";
+import { useLogin, useSaveToken } from "../hooks/mutations/auth";
 import { Loading } from "../components/Loading";
 import { useState } from "react";
-import { useToken } from "../hooks/useToken";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data, mutate, isLoading, isSuccess } = useLogin();
-  useToken(data?.token);
+  const { data, mutate, isLoading } = useLogin();
+  useSaveToken(data);
 
   return (
     <>

@@ -1,15 +1,29 @@
 import { SignOut, User } from "phosphor-react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useStore } from "../../store/zustand";
 
 interface MenuItemProps {
   to: string;
   title: string;
   icon: JSX.Element;
 }
+
 const MenuItem: React.FC<MenuItemProps> = ({ to, title, icon }) => {
+  const nagivate = useNavigate();
+  const logout = useStore((state) => state.logout);
+
+  function logoutHandler() {
+    logout();
+    localStorage.removeItem("token");
+    nagivate("/login");
+  }
+
   return (
-    <li className="px-6 py-1 duration-500 hover:bg-secondary-500 hover:text-white">
+    <li
+      onClick={logoutHandler}
+      className="px-6 py-1 duration-500 hover:bg-secondary-500 hover:text-white"
+    >
       <Link to={to} className="flex items-center gap-1">
         {icon}
         {title}

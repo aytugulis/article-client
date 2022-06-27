@@ -1,11 +1,24 @@
 import { Endpoint } from "../../type/Endpoint";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { axiosClient } from "../../utils/client";
 import { Author } from "../../type/Author";
+import { useStore } from "../../store/zustand";
+import { useNavigate } from "react-router-dom";
 
-interface Register {
+interface AuthData extends Author {
   token: string;
 }
+
+export function useSaveToken(userData?: AuthData) {
+  const navigate = useNavigate();
+  const authorize = useStore((state) => state.authorize);
+  if (userData) {
+    authorize(userData);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    navigate("/");
+  }
+}
+
 interface RegisterProps {
   name: string;
   description: string;
@@ -17,12 +30,12 @@ const register = async (props: RegisterProps) => {
   return data;
 };
 export function useRegister() {
-  return useMutation<Register, Error, RegisterProps>((props) => {
+  return useMutation<AuthData, Error, RegisterProps>((props) => {
     return register(props);
   });
 }
 
-interface Login {
+export interface Login extends Author {
   token: string;
 }
 interface LoginProps {
@@ -34,7 +47,7 @@ const login = async (props: LoginProps) => {
   return data;
 };
 export function useLogin() {
-  return useMutation<Login, Error, LoginProps>((props) => {
+  return useMutation<AuthData, Error, LoginProps>((props) => {
     return login(props);
   });
 }
