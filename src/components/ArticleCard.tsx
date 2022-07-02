@@ -1,6 +1,7 @@
 import { Heart } from "phosphor-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { ArticleImage } from "./ArticleImage";
 import { Avatar } from "./Avatar";
 
 interface ArticleCardProps {
@@ -27,11 +28,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       to={`/article/${id}`}
       className="flex flex-col lg:flex-row justify-center gap-x-5 gap-y-2 items-center lg:basis-1/3 md:basis-1/2 basis-full py-4 cursor-pointer duration-300 rounded hover:bg-gray-400"
     >
-      <img
-        className="w-[288px] h-[162px] lg:w-[208px] lg:h-[117px] object-cover"
-        src={imageUrl}
-        alt="article image"
-      />
+      <ArticleImage imageUrl={imageUrl} />
       <div className="flex flex-col gap-1 items-center lg:items-start">
         <div className="flex items-center gap-2">
           <Avatar imageUrl={profileImage} size="xs" />

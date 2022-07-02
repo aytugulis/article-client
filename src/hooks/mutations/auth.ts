@@ -24,9 +24,23 @@ interface RegisterProps {
   description: string;
   email: string;
   password: string;
+  file?: File;
 }
-const register = async (props: RegisterProps) => {
-  const { data } = await axiosClient.post(Endpoint.register, props);
+const register = async ({
+  description,
+  email,
+  name,
+  password,
+  file,
+}: RegisterProps) => {
+  const formData = new FormData();
+  formData.append("description", description);
+  formData.append("email", email);
+  formData.append("name", name);
+  formData.append("password", password);
+  if (file) formData.append("file", file);
+
+  const { data } = await axiosClient.post(Endpoint.register, formData);
   return data;
 };
 export function useRegister() {

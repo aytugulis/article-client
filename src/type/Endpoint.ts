@@ -1,10 +1,13 @@
 export const Endpoint = {
   test: "test",
+  testById: (id: string) => `test/${id}`,
+
   register: "auth/register",
   login: "auth/login",
-  testById: (id: string) => `test/${id}`,
-  getArticles: "article",
-  getArticle: (id: string) => `article/${id}`,
+
   getTopAuthors: "user/get-top-authors",
   getOneUser: (id: string) => `user/${id}`,
+
+  article: "article",
+  getArticle: (id: string) => `article/${id}`,
 };

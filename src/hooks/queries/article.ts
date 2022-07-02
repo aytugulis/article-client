@@ -34,7 +34,7 @@ const getArticles = async (props: GetArticlesProps) => {
   });
 
   const { data } = await axiosClient.get(
-    `${Endpoint.getArticles}?${queryString.toString()}`
+    `${Endpoint.article}?${queryString.toString()}`
   );
   return data;
 };

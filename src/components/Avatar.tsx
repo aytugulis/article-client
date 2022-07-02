@@ -1,13 +1,14 @@
 import React from "react";
 import cx from "classnames";
 import { Size } from "../type/Variant";
+import { getImageUrl } from "../utils/url";
 
 interface AvatarProps
   extends React.DetailedHTMLProps<
     React.ImgHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
   > {
-  imageUrl: string;
+  imageUrl?: string;
   size: Size;
 }
 
@@ -29,7 +30,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         },
         className
       )}
-      src={imageUrl}
+      src={getImageUrl("user", imageUrl)}
       alt="Avatar"
     />
   );

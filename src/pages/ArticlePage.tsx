@@ -36,7 +36,7 @@ export const ArticlePage: React.FC = () => {
               />
             </div>
             <p className="w-5/6 text-xl leading-8 tracking-wider">
-              {article.content}
+              <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
             </p>
           </div>
           <div className="flex flex-col items-center gap-1">

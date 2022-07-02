@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 
-export const HtmlEditor = () => {
-  const [value, setValue] = useState("");
+interface HtmlEditorProps {
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+}
 
+export const HtmlEditor: React.FC<HtmlEditorProps> = ({ setContent }) => {
   return (
     <ReactQuill
       placeholder="Type your content here"
-      value={value}
-      onChange={(value) => setValue(value)}
+      /*     value={value} */
+      onChange={(value) => setContent(value)}
     />
   );
 };

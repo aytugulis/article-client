@@ -12,6 +12,12 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [password, setPassword] = useState("");
+  const [file, setFile] = useState<File | undefined>(undefined);
+
+  function registerHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    mutate({ description, email, name, password, file });
+  }
 
   const { data, mutate, isLoading } = useRegister();
   useSaveToken(data);
@@ -41,14 +47,12 @@ export const RegisterPage = () => {
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter a password"
         />
+        <input type="file" onChange={(e) => setFile(e.target.files?.[0])} />
 
         <Button
           leftIcon={<Lock size={24} className="text-white" />}
           color="secondary"
-          onClick={(e) => {
-            e.preventDefault();
-            mutate({ description, email, name, password });
-          }}
+          onClick={(e) => registerHandler(e)}
         >
           Register
         </Button>
@@ -61,22 +65,3 @@ export const RegisterPage = () => {
     </>
   );
 };
-
-fetch("http://localhost:5000/api/auth/register", {
-  headers: {
-    accept: "application/json, text/plain, */*",
-    "accept-language": "en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7",
-    "content-type": "application/json",
-    "sec-ch-ua":
-      '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": '"Windows"',
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-site",
-    Referer: "http://localhost:3000/",
-    "Referrer-Policy": "strict-origin-when-cross-origin",
-  },
-  body: '{"description":"","email":"","name":"","password":""}',
-  method: "POST",
-});
