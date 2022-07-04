@@ -11,9 +11,9 @@ interface AuthData extends Author {
 
 export function useSaveToken(userData?: AuthData) {
   const navigate = useNavigate();
-  const authorize = useStore((state) => state.authorize);
+  const setUserData = useStore((state) => state.setUserData);
   if (userData) {
-    authorize(userData);
+    setUserData(userData);
     localStorage.setItem("userData", JSON.stringify(userData));
     navigate("/");
   }
@@ -63,5 +63,36 @@ const login = async (props: LoginProps) => {
 export function useLogin() {
   return useMutation<AuthData, Error, LoginProps>((props) => {
     return login(props);
+  });
+}
+
+interface EditProfileProps {
+  name: string;
+  description: string;
+  email: string;
+  token?: string;
+  file?: File;
+}
+const editProfile = async ({
+  description,
+  email,
+  name,
+  token,
+  file,
+}: EditProfileProps) => {
+  const formData = new FormData();
+  formData.append("description", description);
+  formData.append("email", email);
+  formData.append("name", name);
+  if (file) formData.append("file", file);
+
+  const { data } = await axiosClient.put(Endpoint.updateUser, formData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+export function useEditProfile() {
+  return useMutation<AuthData, Error, EditProfileProps>((props) => {
+    return editProfile(props);
   });
 }

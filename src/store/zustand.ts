@@ -7,7 +7,7 @@ interface UserData extends Author {
 }
 interface BearState {
   userData?: UserData;
-  authorize: (user: UserData) => void;
+  setUserData: (user: UserData) => void;
   logout: () => void;
 }
 
@@ -15,7 +15,7 @@ export const useStore = create<BearState>()(
   devtools(
     persist((set) => ({
       userData: undefined,
-      authorize: (userData) => set({ userData }),
+      setUserData: (userData) => set({ userData }),
       logout: () => set({ userData: undefined }),
     }))
   )

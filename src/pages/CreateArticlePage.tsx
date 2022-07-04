@@ -12,6 +12,7 @@ import { Loading } from "../components/Loading";
 import { useStore } from "../store/zustand";
 import { RadioButtonList } from "../components/RadioButtonList";
 import { Navigate } from "react-router-dom";
+import { FileInput } from "../components/FileInput";
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +53,7 @@ export const CreateArticlePage = () => {
           leftIcon={<TextH size={24} className="text-tropical-blue" />}
           placeholder="Enter a header"
         />
-        <input type="file" onChange={(e) => setFile(e.target.files?.[0])} />
+        <FileInput onChange={(e) => setFile(e.target.files?.[0])} />
         <HtmlEditor setContent={setContent} />
         <div className="flex flex-col items-center lg:flex-row gap-1">
           <h3 className="font-semibold">Categories</h3>

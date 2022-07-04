@@ -4,6 +4,7 @@ export const Endpoint = {
 
   register: "auth/register",
   login: "auth/login",
+  updateUser: "auth/edit",
 
   getTopAuthors: "user/get-top-authors",
   getOneUser: (id: string) => `user/${id}`,

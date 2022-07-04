@@ -1,11 +1,12 @@
 import { Lock, At, IdentificationCard, Password } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { useRegister, useSaveToken } from "../hooks/mutations/auth";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
+import { FileInput } from "../components/FileInput";
 
 export const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -19,11 +20,12 @@ export const RegisterPage = () => {
     mutate({ description, email, name, password, file });
   }
 
-  const { data, mutate, isLoading } = useRegister();
+  const { data, mutate, isLoading, isSuccess } = useRegister();
   useSaveToken(data);
 
   return (
     <>
+      {isSuccess && <Navigate to="/" />}
       {isLoading && <Loading />}
       <FormBox>
         <h2 className="text-2xl font-bold tracking-wide">JOIN US</h2>
@@ -47,8 +49,7 @@ export const RegisterPage = () => {
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter a password"
         />
-        <input type="file" onChange={(e) => setFile(e.target.files?.[0])} />
-
+        <FileInput onChange={(e) => setFile(e.target.files?.[0])} />
         <Button
           leftIcon={<Lock size={24} className="text-white" />}
           color="secondary"
