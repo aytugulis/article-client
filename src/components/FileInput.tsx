@@ -6,6 +6,6 @@ interface FileInputProps
     HTMLInputElement
   > {}
 
-export const FileInput: React.FC<FileInputProps> = (...rest) => {
-  return <input type="file" {...rest} />;
+export const FileInput: React.FC<FileInputProps> = (props) => {
+  return <input type="file" {...props} />;
 };

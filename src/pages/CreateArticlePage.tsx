@@ -2,9 +2,6 @@ import { Plus, TextH } from "phosphor-react";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { CheckBox } from "../components/CheckBox";
-
-import styled from "styled-components";
 import { HtmlEditor } from "../components/HtmlEditor";
 import { useAuth, useCreateArticle } from "../hooks";
 import { useState } from "react";
@@ -12,16 +9,6 @@ import { Loading } from "../components/Loading";
 import { RadioButtonList } from "../components/RadioButtonList";
 import { Navigate } from "react-router-dom";
 import { FileInput } from "../components/FileInput";
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 1rem;
-
-  div {
-    flex-basis: 33.33%;
-  }
-`;
 
 export const CreateArticlePage = () => {
   const [category, setCategory] = useState("");

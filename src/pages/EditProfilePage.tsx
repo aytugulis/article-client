@@ -30,7 +30,7 @@ export const EditProfilePage: React.FC = () => {
     mutate(
       { description, email, name, file, token: userData?.token },
       {
-        onSuccess(data, variables, context) {
+        onSuccess(data, variables) {
           queryClient.setQueryData("userData", {
             ...data,
             token: variables.token,
