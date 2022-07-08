@@ -5,7 +5,7 @@ import { ArticleCardList } from "../components/ArticleCardList";
 import { Avatar } from "../components/Avatar";
 import { Loading } from "../components/Loading";
 import { SectionHeader } from "../components/SectionHeader";
-import { useUser } from "../hooks/queries/user";
+import { useUser } from "../hooks";
 
 export const ProfilePage: React.FC = () => {
   const { id } = useParams();

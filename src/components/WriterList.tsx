@@ -1,4 +1,4 @@
-import { useTopAuthors } from "../hooks/queries/user";
+import { useTopAuthors } from "../hooks";
 import { Loading } from "./Loading";
 import { WriterCard } from "./WriterCard";
 

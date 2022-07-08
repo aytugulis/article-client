@@ -1,3 +1,4 @@
+import { immer } from "zustand/middleware/immer";
 import { Author } from "./../type/Author";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
@@ -13,10 +14,17 @@ interface BearState {
 
 export const useStore = create<BearState>()(
   devtools(
-    persist((set) => ({
-      userData: undefined,
-      setUserData: (userData) => set({ userData }),
-      logout: () => set({ userData: undefined }),
-    }))
+    immer(
+      persist(
+        (set) => ({
+          userData: undefined,
+          setUserData: (userData) => set({ userData }),
+          logout: () => set({ userData: undefined }),
+        }),
+        {
+          name: "zustandStorage",
+        }
+      )
+    )
   )
 );

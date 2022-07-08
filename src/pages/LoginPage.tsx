@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useLogin, useSaveToken } from "../hooks/mutations/auth";
+import { useLogin, useSaveToken } from "../hooks";
 import { Loading } from "../components/Loading";
 import { useState } from "react";
 

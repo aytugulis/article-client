@@ -33,7 +33,6 @@ export const ProfileMenu: React.FC = () => {
 
   function logoutHandler() {
     logout();
-    localStorage.removeItem("token");
     nagivate("/");
   }
 

@@ -6,7 +6,7 @@ import { CheckBox } from "../components/CheckBox";
 
 import styled from "styled-components";
 import { HtmlEditor } from "../components/HtmlEditor";
-import { useCreateArticle } from "../hooks/mutations/article";
+import { useCreateArticle } from "../hooks";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
 import { useStore } from "../store/zustand";

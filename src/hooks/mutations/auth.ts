@@ -14,7 +14,6 @@ export function useSaveToken(userData?: AuthData) {
   const setUserData = useStore((state) => state.setUserData);
   if (userData) {
     setUserData(userData);
-    localStorage.setItem("userData", JSON.stringify(userData));
     navigate("/");
   }
 }

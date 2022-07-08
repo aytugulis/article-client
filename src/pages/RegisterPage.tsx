@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useRegister, useSaveToken } from "../hooks/mutations/auth";
+import { useRegister, useSaveToken } from "../hooks";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
 import { FileInput } from "../components/FileInput";

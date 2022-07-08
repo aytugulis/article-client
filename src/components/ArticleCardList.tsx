@@ -1,7 +1,7 @@
 import React from "react";
 import { ArticleCard } from "./ArticleCard";
 import { Loading } from "../components/Loading";
-import { GetArticlesProps, useArticles } from "../hooks/queries/article";
+import { GetArticlesProps, useArticles } from "../hooks";
 import { Category } from "../type/Article";
 
 export const ArticleCardList: React.FC<GetArticlesProps> = ({

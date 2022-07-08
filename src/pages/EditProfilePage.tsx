@@ -13,7 +13,7 @@ import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { useStore } from "../store/zustand";
 import { FileInput } from "../components/FileInput";
-import { useEditProfile } from "../hooks/mutations/auth";
+import { useEditProfile } from "../hooks";
 import { Loading } from "../components/Loading";
 
 export const EditProfilePage: React.FC = () => {

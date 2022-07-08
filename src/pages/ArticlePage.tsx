@@ -5,7 +5,7 @@ import { ArticleCardList } from "../components/ArticleCardList";
 import { Avatar } from "../components/Avatar";
 import { Loading } from "../components/Loading";
 import { SectionHeader } from "../components/SectionHeader";
-import { useArticle } from "../hooks/queries/article";
+import { useArticle } from "../hooks";
 
 export const ArticlePage: React.FC = () => {
   const { id } = useParams();
