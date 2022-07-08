@@ -1,5 +1,5 @@
 import { Lock, At, IdentificationCard, Password } from "phosphor-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
@@ -16,7 +16,6 @@ export const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [file, setFile] = useState<File | undefined>(undefined);
 
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   function registerHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -26,7 +25,6 @@ export const RegisterPage = () => {
       {
         onSuccess(data) {
           queryClient.setQueryData("userData", data);
-          navigate("/");
         },
       }
     );

@@ -14,9 +14,11 @@ import { TextInput } from "../components/TextInput";
 import { FileInput } from "../components/FileInput";
 import { useAuth, useEditProfile } from "../hooks";
 import { Loading } from "../components/Loading";
+import { useQueryClient } from "react-query";
 
 export const EditProfilePage: React.FC = () => {
   const userData = useAuth();
+  const queryClient = useQueryClient();
 
   const [name, setName] = useState(userData?.name || "");
   const [email, setEmail] = useState(userData?.email || "");
@@ -25,9 +27,17 @@ export const EditProfilePage: React.FC = () => {
 
   function editUserHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    mutate({ description, email, name, file, token: userData?.token });
-    /*     setUserData({ description, email, name , ... }); */
-    //Return user when updated
+    mutate(
+      { description, email, name, file, token: userData?.token },
+      {
+        onSuccess(data, variables, context) {
+          queryClient.setQueryData("userData", {
+            ...data,
+            token: variables.token,
+          });
+        },
+      }
+    );
   }
 
   const { mutate, isLoading, isSuccess } = useEditProfile();

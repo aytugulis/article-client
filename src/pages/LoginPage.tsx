@@ -1,5 +1,5 @@
 import { Fingerprint, At, Password } from "phosphor-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
@@ -12,7 +12,6 @@ export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const loginHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -22,16 +21,16 @@ export const LoginPage = () => {
       {
         onSuccess(data) {
           queryClient.setQueryData("userData", data);
-          navigate("/");
         },
       }
     );
   };
 
-  const { mutate, isLoading } = useLogin();
+  const { mutate, isLoading, isSuccess } = useLogin();
 
   return (
     <>
+      {isSuccess && <Navigate to="/" />}
       {isLoading && <Loading />}
       <FormBox>
         <h2 className="text-2xl font-bold tracking-wide text-primary-900">
