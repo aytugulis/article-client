@@ -2,11 +2,9 @@ import { User, Book } from "phosphor-react";
 import { ArticleCardList } from "../components/ArticleCardList";
 import { WriterList } from "../components/WriterList";
 import { SectionHeader } from "../components/SectionHeader";
-import { useStore } from "../store/zustand";
+import { queryClient } from "../main";
 
 export const MainPage = () => {
-  const userData = useStore((state) => state.userData);
-  console.log(userData);
   return (
     <div className="flex flex-col items-center gap-10 my-10">
       <h1 className="text-3xl font-bold">Read</h1>

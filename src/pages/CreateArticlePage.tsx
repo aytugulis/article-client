@@ -6,10 +6,9 @@ import { CheckBox } from "../components/CheckBox";
 
 import styled from "styled-components";
 import { HtmlEditor } from "../components/HtmlEditor";
-import { useCreateArticle } from "../hooks";
+import { useAuth, useCreateArticle } from "../hooks";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
-import { useStore } from "../store/zustand";
 import { RadioButtonList } from "../components/RadioButtonList";
 import { Navigate } from "react-router-dom";
 import { FileInput } from "../components/FileInput";
@@ -30,7 +29,7 @@ export const CreateArticlePage = () => {
   const [header, setHeader] = useState("");
   const [file, setFile] = useState<File | undefined>(undefined);
 
-  const userData = useStore((state) => state.userData);
+  const userData = useAuth();
 
   function createArticleHandler(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

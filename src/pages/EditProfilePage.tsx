@@ -11,14 +11,12 @@ import { Link, Navigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useStore } from "../store/zustand";
 import { FileInput } from "../components/FileInput";
-import { useEditProfile } from "../hooks";
+import { useAuth, useEditProfile } from "../hooks";
 import { Loading } from "../components/Loading";
 
 export const EditProfilePage: React.FC = () => {
-  const userData = useStore((state) => state.userData);
-  const setUserData = useStore((state) => state.setUserData);
+  const userData = useAuth();
 
   const [name, setName] = useState(userData?.name || "");
   const [email, setEmail] = useState(userData?.email || "");

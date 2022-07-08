@@ -1,22 +1,8 @@
+import { AuthData } from "./../../type/AuthData";
 import { Endpoint } from "../../type/Endpoint";
 import { useMutation } from "react-query";
 import { axiosClient } from "../../utils/client";
 import { Author } from "../../type/Author";
-import { useStore } from "../../store/zustand";
-import { useNavigate } from "react-router-dom";
-
-interface AuthData extends Author {
-  token: string;
-}
-
-export function useSaveToken(userData?: AuthData) {
-  const navigate = useNavigate();
-  const setUserData = useStore((state) => state.setUserData);
-  if (userData) {
-    setUserData(userData);
-    navigate("/");
-  }
-}
 
 interface RegisterProps {
   name: string;

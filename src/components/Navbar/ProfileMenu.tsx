@@ -1,7 +1,7 @@
 import { SignOut, User } from "phosphor-react";
 import React from "react";
+import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
-import { useStore } from "../../store/zustand";
 
 interface MenuItemProps
   extends React.DetailedHTMLProps<
@@ -29,10 +29,10 @@ const MenuItem: React.FC<MenuItemProps> = ({ to, title, icon, ...rest }) => {
 
 export const ProfileMenu: React.FC = () => {
   const nagivate = useNavigate();
-  const logout = useStore((state) => state.logout);
+  const queryClient = useQueryClient();
 
   function logoutHandler() {
-    logout();
+    queryClient.setQueryData("userData", undefined);
     nagivate("/");
   }
 

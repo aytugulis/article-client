@@ -1,14 +1,14 @@
 import { PencilLine } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useStore } from "../../store/zustand";
+import { useAuth } from "../../hooks";
 import { Avatar } from "../Avatar";
 import { Badge } from "../Badge";
 import { ProfileMenu } from "./ProfileMenu";
 
 export const Member = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const userData = useStore((state) => state.userData);
+  const userData = useAuth();
 
   return (
     <ul className="flex items-center gap-3">

@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useStore } from "../../store/zustand";
+import { useAuth } from "../../hooks";
 
 interface PrivateRouteProps {
   children: JSX.Element;
 }
 
 export const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-  const userData = useStore((state) => state.userData);
+  const user = useAuth();
 
-  return userData ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/login" />;
 };

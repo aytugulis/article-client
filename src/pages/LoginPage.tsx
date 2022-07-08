@@ -1,18 +1,34 @@
 import { Fingerprint, At, Password } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
-import { useLogin, useSaveToken } from "../hooks";
+import { useLogin } from "../hooks/";
 import { Loading } from "../components/Loading";
 import { useState } from "react";
+import { useQueryClient } from "react-query";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data, mutate, isLoading } = useLogin();
-  useSaveToken(data);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const loginHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    mutate(
+      { email, password },
+      {
+        onSuccess(data) {
+          queryClient.setQueryData("userData", data);
+          navigate("/");
+        },
+      }
+    );
+  };
+
+  const { mutate, isLoading } = useLogin();
 
   return (
     <>
@@ -33,10 +49,7 @@ export const LoginPage = () => {
         />
 
         <Button
-          onClick={(e) => {
-            e.preventDefault();
-            mutate({ email, password });
-          }}
+          onClick={(e) => loginHandler(e)}
           leftIcon={<Fingerprint size={24} className="text-white" />}
           color="secondary"
         >
