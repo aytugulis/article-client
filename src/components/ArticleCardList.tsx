@@ -2,13 +2,17 @@ import React from "react";
 import { ArticleCard } from "./ArticleCard";
 import { Loading } from "../components/Loading";
 import { GetArticlesProps, useArticles } from "../hooks";
-import { Category } from "../type/Article";
 
-export const ArticleCardList: React.FC<GetArticlesProps> = ({
+interface ArticleCardListProps extends GetArticlesProps {
+  withIcon?: boolean;
+}
+
+export const ArticleCardList: React.FC<ArticleCardListProps> = ({
   category,
   authorId,
   limit,
   page,
+  withIcon,
 }) => {
   const { data, isLoading } = useArticles({ category, authorId, limit, page });
 
@@ -27,6 +31,7 @@ export const ArticleCardList: React.FC<GetArticlesProps> = ({
               fullName={author.name}
               header={header}
               date={createdAt}
+              withIcon={withIcon}
             />
           )
         )}

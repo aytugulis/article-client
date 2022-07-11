@@ -37,3 +37,67 @@ export function useCreateArticle() {
     }
   );
 }
+
+interface DeleteArticleProps {
+  id: string;
+  token: string;
+}
+interface DeleteArticleResponse {
+  message: string;
+}
+
+const deleteArticle = async ({ id, token }: DeleteArticleProps) => {
+  const { data } = await axiosClient.delete(Endpoint.deleteArticle(id), {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+export function useDeleteArticle() {
+  return useMutation<DeleteArticleResponse, Error, DeleteArticleProps>(
+    (props) => {
+      return deleteArticle(props);
+    },
+    {
+      mutationKey: "posts",
+    }
+  );
+}
+
+interface UpdateArticleProps {
+  header: string;
+  id: string;
+  content: string;
+  category: string;
+  token?: string;
+  file?: File;
+}
+interface UpdateArticleResponse {
+  message: string;
+}
+
+const updateArticle = async ({
+  header,
+  content,
+  category,
+  file,
+  token,
+  id,
+}: UpdateArticleProps) => {
+  const formData = new FormData();
+  formData.append("header", header);
+  formData.append("content", content);
+  formData.append("category", category);
+  if (file) formData.append("file", file);
+
+  const { data } = await axiosClient.put(Endpoint.updateArticle(id), formData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+export function useUpdateArticle() {
+  return useMutation<UpdateArticleResponse, Error, UpdateArticleProps>(
+    (props) => {
+      return updateArticle(props);
+    }
+  );
+}

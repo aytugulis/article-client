@@ -44,6 +44,11 @@ export const ProfileMenu: React.FC = () => {
         title="Edit Profile"
       />
       <MenuItem
+        icon={<SignOut weight="fill" size={21} />}
+        to="/my-articles"
+        title="My Articles"
+      />
+      <MenuItem
         onClick={logoutHandler}
         icon={<SignOut weight="fill" size={21} />}
         to="/logout"

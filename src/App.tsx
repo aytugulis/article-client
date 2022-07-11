@@ -10,6 +10,8 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { ArticlePage } from "./pages/ArticlePage";
 import { PrivateRoute } from "./components/Routes/PrivateRoute";
 import { PublicRoute } from "./components/Routes/PublicRoute";
+import { MyArticlesPage } from "./pages/MyArticlesPage";
+import { EditArticlePage } from "./pages/EditArticlePage";
 
 function App() {
   return (
@@ -54,6 +56,22 @@ function App() {
             element={
               <PrivateRoute>
                 <CreateArticlePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-articles"
+            element={
+              <PrivateRoute>
+                <MyArticlesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edit-article/:id"
+            element={
+              <PrivateRoute>
+                <EditArticlePage />
               </PrivateRoute>
             }
           />

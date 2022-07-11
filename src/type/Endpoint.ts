@@ -11,4 +11,6 @@ export const Endpoint = {
 
   article: "article",
   getArticle: (id: string) => `article/${id}`,
+  deleteArticle: (id: string) => `article/${id}`,
+  updateArticle: (id: string) => `article/${id}`,
 };
