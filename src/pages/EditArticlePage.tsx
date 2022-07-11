@@ -1,6 +1,7 @@
 import { Plus, TextH } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useQueryClient } from "react-query";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { FileInput } from "../components/FileInput";
 import { FormBox } from "../components/FormBox";
@@ -8,37 +9,47 @@ import { HtmlEditor } from "../components/HtmlEditor";
 import { Loading } from "../components/Loading";
 import { RadioButtonList } from "../components/RadioButtonList";
 import { TextInput } from "../components/TextInput";
-import { useArticle, useAuth, useUpdateArticle } from "../hooks";
+import {
+  useArticle,
+  useAuth,
+  useUnenabledArticle,
+  useUpdateArticle,
+} from "../hooks";
 
-export const EditArticlePage = () => {
+const Form = () => {
   const { id } = useParams();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const userData = useAuth();
-  const { data } = useArticle(id!);
-  const { mutate, isSuccess, isLoading } = useUpdateArticle();
+  const { data } = useUnenabledArticle(id!);
 
-  const [category, setCategory] = useState("");
-  const [content, setContent] = useState("");
-  const [header, setHeader] = useState("");
+  const [category, setCategory] = useState(data?.category || "");
+  const [content, setContent] = useState(data?.content || "");
+  const [header, setHeader] = useState(data?.header || "");
   const [file, setFile] = useState<File | undefined>(undefined);
 
-  useEffect(() => {
-    setCategory(data?.category || "");
-    setContent(data?.content || "");
-    setHeader(data?.header || "");
-  }, [data]);
+  const { mutate, isSuccess, isLoading } = useUpdateArticle();
 
   function updateArticleHandler(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
     e.preventDefault();
     if (!id) return;
-    mutate({ category, content, header, file, token: userData?.token, id });
+    mutate(
+      { category, content, header, file, token: userData?.token, id },
+      {
+        onSuccess() {
+          queryClient.invalidateQueries(["posts", id]);
+          navigate("/my-articles");
+        },
+      }
+    );
   }
+
   return (
     <>
       {isLoading && <Loading />}
-      {isSuccess && <Navigate to="/my-articles" />}
       <FormBox>
         <h2 className="text-2xl font-bold tracking-wide text-primary-900">
           Update the Article
@@ -66,4 +77,11 @@ export const EditArticlePage = () => {
       </FormBox>
     </>
   );
+};
+
+export const EditArticlePage = () => {
+  const { id } = useParams();
+  const { isLoading: isGetLoading } = useArticle(id!);
+
+  return <>{isGetLoading ? <Loading /> : <Form />}</>;
 };

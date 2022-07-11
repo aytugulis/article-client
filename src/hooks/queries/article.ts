@@ -12,6 +12,11 @@ export function useArticle(articleId: string) {
     getArticle(articleId)
   );
 }
+export function useUnenabledArticle(articleId: string) {
+  return useQuery<PopulatedArticle, Error>(["posts", articleId], {
+    enabled: false,
+  });
+}
 
 interface GetArticles {
   articles: PopulatedArticle[];
