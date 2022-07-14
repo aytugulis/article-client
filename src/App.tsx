@@ -19,14 +19,7 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route
-            path="/test"
-            element={
-              <PrivateRoute>
-                <TestPage />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/test" element={<TestPage />} />
           <Route
             path="/login"
             element={
