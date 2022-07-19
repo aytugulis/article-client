@@ -1,14 +1,14 @@
 import { Fingerprint, At, Password } from "phosphor-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { useLogin } from "../hooks/";
 import { Loading } from "../components/Loading";
-import { useState } from "react";
 import { useQueryClient } from "react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { emailRegex } from "../utils/format";
+import { loginSchema } from "../schemas/authSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface LoginInputs {
   email: string;
@@ -18,7 +18,7 @@ interface LoginInputs {
 export const LoginPage = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const methods = useForm<LoginInputs>();
+  const methods = useForm<LoginInputs>({ resolver: yupResolver(loginSchema) });
 
   const loginHandler: SubmitHandler<LoginInputs> = (data) => {
     mutate(data, {
@@ -29,7 +29,7 @@ export const LoginPage = () => {
     });
   };
 
-  const { mutate, isLoading, isSuccess } = useLogin();
+  const { mutate, isLoading } = useLogin();
 
   return (
     <>
@@ -40,13 +40,11 @@ export const LoginPage = () => {
         </h2>
         <TextInput
           registerName="email"
-          registerOption={{ required: true, pattern: emailRegex }}
           leftIcon={<At size={24} className="text-gray-500" />}
           placeholder="Enter your email"
         />
         <TextInput
           registerName="password"
-          registerOption={{ required: true }}
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter your password"
         />

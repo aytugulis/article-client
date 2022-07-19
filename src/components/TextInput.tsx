@@ -13,7 +13,6 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   registerName: string;
-  registerOption?: RegisterOptions;
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -21,7 +20,6 @@ export const TextInput: React.FC<TextInputProps> = ({
   rightIcon,
   className,
   registerName,
-  registerOption,
   ...rest
 }) => {
   const {
@@ -30,6 +28,7 @@ export const TextInput: React.FC<TextInputProps> = ({
     formState: { errors },
   } = useFormContext();
   const error = errors[registerName];
+  console.log(error);
 
   return (
     <div className="flex flex-col">
@@ -39,7 +38,7 @@ export const TextInput: React.FC<TextInputProps> = ({
 
         <input
           {...rest}
-          {...register(registerName, registerOption)}
+          {...register(registerName)}
           onChange={(e) => {
             setValue(registerName, e.target.value, {
               shouldValidate: true,
@@ -67,7 +66,7 @@ export const Error: React.FC<ErrorProps> = ({ error }) => {
     <>
       {error && (
         <span className="text-red-600 text-sm text-center">
-          {`*${error?.type}`} {/* Todo error message ?  */}
+          {`*${error?.message}`} {/* Todo error message ?  */}
         </span>
       )}
     </>
