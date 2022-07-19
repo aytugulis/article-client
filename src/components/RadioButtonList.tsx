@@ -1,72 +1,49 @@
-import cx from "classnames";
-import React, { useId, useState } from "react";
-
-interface RadioButtonProps {
-  selectedValue?: string;
-  value: string;
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const RadioButton: React.FC<RadioButtonProps> = ({
-  setCategory,
-  value,
-  selectedValue,
-}) => {
-  return (
-    <>
-       <label htmlFor={value}>{value}</label>
-      <input
-        checked={selectedValue ? selectedValue === value : value === "Frontend"}
-        onChange={(e) => setCategory(e.target.value)}
-        type="radio"
-        name="category"
-        id={value}
-        value={value}
-      />
-    </>
-  );
-};
+import React from "react";
+import { RadioButton } from "./RadioButton";
 
 interface RadioButtonListProps {
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  registerName: string;
   selectedValue?: string;
 }
 export const RadioButtonList: React.FC<RadioButtonListProps> = ({
-  setCategory,
   selectedValue,
+  registerName,
 }) => {
   return (
-    <div className="flex gap-2">
-      <RadioButton
-        selectedValue={selectedValue}
-        value="Frontend"
-        setCategory={setCategory}
-      />
-      <RadioButton
-        selectedValue={selectedValue}
-        value="Backend"
-        setCategory={setCategory}
-      />
-      <RadioButton
-        selectedValue={selectedValue}
-        value="Fullstack"
-        setCategory={setCategory}
-      />
-      <RadioButton
-        selectedValue={selectedValue}
-        value="Devops"
-        setCategory={setCategory}
-      />
-      <RadioButton
-        selectedValue={selectedValue}
-        value="AI"
-        setCategory={setCategory}
-      />
-      <RadioButton
-        selectedValue={selectedValue}
-        value="Data"
-        setCategory={setCategory}
-      />
+    <div className="flex flex-col items-center lg:flex-row gap-1">
+      <h3 className="font-semibold">Categories:</h3>
+      <div className="flex justify-center flex-wrap gap-3">
+        <RadioButton
+          selectedValue={selectedValue}
+          value="Frontend"
+          registerName={registerName}
+        />
+        <RadioButton
+          selectedValue={selectedValue}
+          value="Backend"
+          registerName={registerName}
+        />
+        <RadioButton
+          selectedValue={selectedValue}
+          value="Fullstack"
+          registerName={registerName}
+        />
+        <RadioButton
+          selectedValue={selectedValue}
+          value="Devops"
+          registerName={registerName}
+        />
+        <RadioButton
+          selectedValue={selectedValue}
+          value="AI"
+          registerName={registerName}
+        />
+        <RadioButton
+          selectedValue={selectedValue}
+          value="Data"
+          registerName={registerName}
+        />
+      </div>
     </div>
   );
 };

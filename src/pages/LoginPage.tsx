@@ -10,7 +10,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { loginSchema } from "../schemas/authSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-interface LoginInputs {
+interface LoginInput {
   email: string;
   password: string;
 }
@@ -18,9 +18,9 @@ interface LoginInputs {
 export const LoginPage = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const methods = useForm<LoginInputs>({ resolver: yupResolver(loginSchema) });
+  const methods = useForm<LoginInput>({ resolver: yupResolver(loginSchema) });
 
-  const loginHandler: SubmitHandler<LoginInputs> = (data) => {
+  const loginHandler: SubmitHandler<LoginInput> = (data) => {
     mutate(data, {
       onSuccess(data) {
         queryClient.setQueryData("userData", data);

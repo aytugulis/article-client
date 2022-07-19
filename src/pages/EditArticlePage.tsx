@@ -1,7 +1,8 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Plus, TextH } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { FileInput } from "../components/FileInput";
 import { FormBox } from "../components/FormBox";
@@ -15,29 +16,36 @@ import {
   useUnenabledArticle,
   useUpdateArticle,
 } from "../hooks";
+import { articleSchema } from "../schemas/articleSchema";
+
+interface EditArticleInput {
+  category: string;
+  content: string;
+  header: string;
+  file?: File[];
+}
 
 const Form = () => {
   const { id } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
   const userData = useAuth();
   const { data } = useUnenabledArticle(id!);
+  const methods = useForm<EditArticleInput>({
+    resolver: yupResolver(articleSchema),
+    defaultValues: {
+      category: data?.category,
+      content: data?.content,
+      header: data?.header,
+    },
+  });
 
-  const [category, setCategory] = useState(data?.category || "");
-  const [content, setContent] = useState(data?.content || "");
-  const [header, setHeader] = useState(data?.header || "");
-  const [file, setFile] = useState<File | undefined>(undefined);
+  const { mutate, isLoading } = useUpdateArticle();
 
-  const { mutate, isSuccess, isLoading } = useUpdateArticle();
-
-  function updateArticleHandler(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    e.preventDefault();
+  const updateArticleHandler: SubmitHandler<EditArticleInput> = (data) => {
     if (!id) return;
     mutate(
-      { category, content, header, file, token: userData?.token, id },
+      { ...data, file: data?.file?.[0], token: userData?.token, id },
       {
         onSuccess() {
           queryClient.invalidateQueries(["posts", id]);
@@ -45,30 +53,31 @@ const Form = () => {
         },
       }
     );
-  }
+  };
 
   return (
     <>
       {isLoading && <Loading />}
-      <FormBox>
+      <FormBox
+        methods={methods}
+        onSubmit={methods.handleSubmit(updateArticleHandler)}
+      >
         <h2 className="text-2xl font-bold tracking-wide text-primary-900">
           Update the Article
         </h2>
         <TextInput
-          onChange={(e) => setHeader(e.target.value)}
+          registerName="header"
           leftIcon={<TextH size={24} className="text-tropical-blue" />}
           placeholder="Enter a header"
-          value={header}
         />
-        <FileInput onChange={(e) => setFile(e.target.files?.[0])} />
-        <HtmlEditor setContent={setContent} value={content} />
+        <FileInput registerName="file" />
+        <HtmlEditor registerName="content" />
         <div className="flex flex-col items-center lg:flex-row gap-1">
           <h3 className="font-semibold">Categories</h3>
 
-          <RadioButtonList selectedValue={category} setCategory={setCategory} />
+          <RadioButtonList registerName="category" />
         </div>
         <Button
-          onClick={(e) => updateArticleHandler(e)}
           rightIcon={<Plus size={24} className="text-white" />}
           color="tropical-blue"
         >

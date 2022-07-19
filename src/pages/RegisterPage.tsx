@@ -1,5 +1,5 @@
 import { Lock, At, IdentificationCard, Password } from "phosphor-react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
@@ -8,61 +8,71 @@ import { useState } from "react";
 import { Loading } from "../components/Loading";
 import { FileInput } from "../components/FileInput";
 import { useQueryClient } from "react-query";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../schemas/authSchema";
+
+interface RegisterInput {
+  name: string;
+  email: string;
+  description: string;
+  password: string;
+  file?: File[];
+}
 
 export const RegisterPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
-  const [password, setPassword] = useState("");
-  const [file, setFile] = useState<File | undefined>(undefined);
-
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const methods = useForm<RegisterInput>({
+    resolver: yupResolver(registerSchema),
+  });
 
-  function registerHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
+  const registerHandler: SubmitHandler<RegisterInput> = (data) => {
     mutate(
-      { description, email, name, password, file },
+      { ...data, file: data?.file?.[0] },
       {
         onSuccess(data) {
           queryClient.setQueryData("userData", data);
+          navigate("/");
         },
       }
     );
-  }
+  };
 
-  const { mutate, isLoading, isSuccess } = useRegister();
+  const { mutate, isLoading } = useRegister();
 
   return (
     <>
-      {isSuccess && <Navigate to="/" />}
       {isLoading && <Loading />}
-      <FormBox>
+      <FormBox
+        methods={methods}
+        onSubmit={methods.handleSubmit(registerHandler)}
+      >
         <h2 className="text-2xl font-bold tracking-wide">JOIN US</h2>
         <TextInput
-          onChange={(e) => setName(e.target.value)}
+          registerName="name"
           leftIcon={<IdentificationCard size={24} className="text-gray-500" />}
           placeholder="Enter a name"
         />
         <TextInput
-          onChange={(e) => setEmail(e.target.value)}
+          registerName="email"
           leftIcon={<At size={24} className="text-gray-500" />}
           placeholder="Enter an email"
         />
         <TextInput
-          onChange={(e) => setDescription(e.target.value)}
+          registerName="description"
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter a description"
         />
         <TextInput
-          onChange={(e) => setPassword(e.target.value)}
+          registerName="password"
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter a password"
         />
-        <FileInput onChange={(e) => setFile(e.target.files?.[0])} />
+        <FileInput registerName="file" />
         <Button
           leftIcon={<Lock size={24} className="text-white" />}
           color="secondary"
-          onClick={(e) => registerHandler(e)}
         >
           Register
         </Button>

@@ -7,6 +7,7 @@ import {
   RegisterOptions,
   useFormContext,
 } from "react-hook-form";
+import { Error } from "./Error";
 import { InlineIcon } from "./InlineIcon";
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -28,7 +29,6 @@ export const TextInput: React.FC<TextInputProps> = ({
     formState: { errors },
   } = useFormContext();
   const error = errors[registerName];
-  console.log(error);
 
   return (
     <div className="flex flex-col">
@@ -55,20 +55,5 @@ export const TextInput: React.FC<TextInputProps> = ({
       </div>
       <Error error={error} />
     </div>
-  );
-};
-
-interface ErrorProps {
-  error: Merge<FieldError, FieldErrorsImpl<DeepRequired<any>>> | undefined;
-}
-export const Error: React.FC<ErrorProps> = ({ error }) => {
-  return (
-    <>
-      {error && (
-        <span className="text-red-600 text-sm text-center">
-          {`*${error?.message}`} {/* Todo error message ?  */}
-        </span>
-      )}
-    </>
   );
 };

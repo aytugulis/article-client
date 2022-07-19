@@ -7,47 +7,58 @@ import { useAuth, useCreateArticle } from "../hooks";
 import { useState } from "react";
 import { Loading } from "../components/Loading";
 import { RadioButtonList } from "../components/RadioButtonList";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { FileInput } from "../components/FileInput";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { articleSchema } from "../schemas/articleSchema";
+
+interface CreateArticleInput {
+  category: string;
+  content: string;
+  header: string;
+  file?: File[];
+}
 
 export const CreateArticlePage = () => {
-  const [category, setCategory] = useState("");
-  const [content, setContent] = useState("");
-  const [header, setHeader] = useState("");
-  const [file, setFile] = useState<File | undefined>(undefined);
-
   const userData = useAuth();
+  const navigate = useNavigate();
+  const methods = useForm<CreateArticleInput>({
+    resolver: yupResolver(articleSchema),
+    defaultValues: { category: "Frontend", content: "" },
+  });
 
-  function createArticleHandler(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    e.preventDefault();
-    mutate({ category, content, header, file, token: userData?.token });
-  }
+  const createArticleHandler: SubmitHandler<CreateArticleInput> = (data) => {
+    mutate(
+      { ...data, file: data?.file?.[0], token: userData?.token },
+      {
+        onSuccess() {
+          navigate("/");
+        },
+      }
+    );
+  };
 
-  const { mutate, isLoading, isSuccess } = useCreateArticle();
+  const { mutate, isLoading } = useCreateArticle();
   return (
     <>
       {isLoading && <Loading />}
-      {isSuccess && <Navigate to="/" />}
-      <FormBox>
+      <FormBox
+        methods={methods}
+        onSubmit={methods.handleSubmit(createArticleHandler)}
+      >
         <h2 className="text-2xl font-bold tracking-wide text-primary-900">
           Create an Article
         </h2>
         <TextInput
-          onChange={(e) => setHeader(e.target.value)}
+          registerName="header"
           leftIcon={<TextH size={24} className="text-tropical-blue" />}
           placeholder="Enter a header"
         />
-        <FileInput onChange={(e) => setFile(e.target.files?.[0])} />
-        <HtmlEditor setContent={setContent} />
-        <div className="flex flex-col items-center lg:flex-row gap-1">
-          <h3 className="font-semibold">Categories</h3>
-
-          <RadioButtonList setCategory={setCategory} />
-        </div>
+        <FileInput registerName="file" />
+        <HtmlEditor registerName="content" />
+        <RadioButtonList registerName="category" />
         <Button
-          onClick={(e) => createArticleHandler(e)}
           rightIcon={<Plus size={24} className="text-white" />}
           color="tropical-blue"
         >
