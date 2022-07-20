@@ -20,13 +20,13 @@ export const Avatar: React.FC<AvatarProps> = ({
   return (
     <img
       className={cx(
-        "rounded-full inline-block border-[3px] border-gray",
+        "rounded-full object-cover border-2 border-secondary",
         {
-          "w-6": size === "xs",
-          "w-8": size === "sm",
-          "w-12": size === "md",
-          "w-16": size === "lg",
-          "w-24": size === "xl",
+          "w-6 h-6": size === "xs",
+          "w-8 h-8": size === "sm",
+          "w-12 h-12": size === "md",
+          "w-16 h-16": size === "lg",
+          "w-24 h-24": size === "xl",
         },
         className
       )}

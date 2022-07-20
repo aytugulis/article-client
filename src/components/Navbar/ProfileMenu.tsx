@@ -1,4 +1,4 @@
-import { SignOut, User } from "phosphor-react";
+import { Book, SignOut, User } from "phosphor-react";
 import React from "react";
 import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,12 +16,12 @@ interface MenuItemProps
 const MenuItem: React.FC<MenuItemProps> = ({ to, title, icon, ...rest }) => {
   return (
     <li
-      className="px-6 py-1 duration-500 hover:bg-secondary-500 hover:text-white"
+      className="px-4 py-1 duration-500 hover:bg-gray-500 hover:text-white text-sm"
       {...rest}
     >
       <Link to={to} className="flex items-center gap-1">
         {icon}
-        {title}
+        <p className="hidden sm:block">{title}</p>
       </Link>
     </li>
   );
@@ -37,14 +37,14 @@ export const ProfileMenu: React.FC = () => {
   }
 
   return (
-    <ul className="cursor-pointer rounded-md bg-white divide-y divide-secondary-500 border border-secondary-500 text-secondary-500">
+    <ul className="absolute top-14 rounded-md bg-white divide-y divide-gray-500 border border-gray-500 text-gray-500">
       <MenuItem
         icon={<User weight="fill" size={21} />}
         to="/edit-profile"
         title="Edit Profile"
       />
       <MenuItem
-        icon={<SignOut weight="fill" size={21} />}
+        icon={<Book weight="fill" size={21} />}
         to="/my-articles"
         title="My Articles"
       />

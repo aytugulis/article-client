@@ -37,7 +37,6 @@ export const TextInput: React.FC<TextInputProps> = ({
         {rightIcon && <InlineIcon icon={rightIcon} direction="right" />}
 
         <input
-          {...rest}
           {...register(registerName)}
           onChange={(e) => {
             setValue(registerName, e.target.value, {
@@ -51,6 +50,7 @@ export const TextInput: React.FC<TextInputProps> = ({
             { "border-red-600": error },
             className
           )}
+          {...rest}
         />
       </div>
       <Error error={error} />

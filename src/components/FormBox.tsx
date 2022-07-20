@@ -14,7 +14,7 @@ export const FormBox: React.FC<FormBoxProps> = ({
   ...rest
 }) => {
   return (
-    <div className="flex justify-center items-center min-h-full">
+    <div className="flex justify-center items-center min-h-full py-5">
       <FormProvider {...methods}>
         <form className="flex flex-col gap-5 items-center" {...rest}>
           {children}

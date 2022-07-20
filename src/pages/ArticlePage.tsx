@@ -21,24 +21,25 @@ export const ArticlePage: React.FC = () => {
             className="flex flex-col items-center gap-1 duration-300 rounded hover:bg-gray-400 p-2"
           >
             <Avatar size="xl" imageUrl={article.author.imageUrl} />
-            <p className="font-medium text-lg">{article.author.name}</p>
-            <p>{article.author.description}</p>
+            <p className="font-medium text-lg word-break: break-all">
+              {article.author.name}
+            </p>
+            <p className="word-break: break-all">
+              {article.author.description}
+            </p>
           </Link>
 
           <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center w-3/5 justify-center">
-              <h2 className="font-bold text-2xl text-center">
-                {article.header}
-              </h2>
-              <ThumbsUp
-                size={50}
-                className="cursor-pointer hover:text-secondary"
-              />
-            </div>
-            <p className="w-5/6 text-xl leading-8 tracking-wider">
-              <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
-            </p>
+            <h2 className="font-bold text-2xl text-center word-break: break-all">
+              {article.header}
+            </h2>
+
+            <p
+              className="mx-20 text-xl leading-8 tracking-wider word-break: break-all"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            ></p>
           </div>
+
           <div className="flex flex-col items-center gap-1">
             <SectionHeader
               icon={<Book weight="fill" size={20} />}

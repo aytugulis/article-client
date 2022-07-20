@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Lock,
-  At,
-  IdentificationCard,
-  Password,
-  Upload,
-  ArrowUp,
-} from "phosphor-react";
+import { At, IdentificationCard, Quotes, ArrowUp } from "phosphor-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
@@ -74,7 +67,7 @@ export const EditProfilePage: React.FC = () => {
         />
         <TextInput
           registerName="description"
-          leftIcon={<IdentificationCard size={24} className="text-gray-500" />}
+          leftIcon={<Quotes size={24} className="text-gray-500" />}
         />
         <FileInput registerName="file" />
 

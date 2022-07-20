@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { setContentLength } from "../utils/format";
 import { Avatar } from "./Avatar";
 import { Badge } from "./Badge";
 import { Button } from "./Button";
@@ -18,19 +19,18 @@ export const WriterCard: React.FC<WriterCardProps> = ({
   description,
 }) => {
   return (
-    <li className="flex flex-col basis-full md:basis-1/3 p-5 gap-1">
+    <li className="flex flex-col basis-full lg:basis-0 p-5 gap-1">
       <Link
         to={`/profile/${id}`}
         className="flex flex-col items-center p-3 duration-300 rounded hover:bg-gray-400"
       >
         <Avatar imageUrl={profileImage} size="lg" />
-        <div className="flex items-center gap-1">
-          <span className="font-medium text-lg text-gray-700">{fullName}</span>
-          <Badge className="cursor-pointer" color="secondary">
-            More
-          </Badge>
-        </div>
-        <p>{description}</p>
+
+        <span className="font-medium text-gray-700">
+          {setContentLength(fullName, 15)}
+        </span>
+
+        <p>{setContentLength(description, 15)}</p>
       </Link>
     </li>
   );

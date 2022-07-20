@@ -19,8 +19,10 @@ export const ProfilePage: React.FC = () => {
         <div className="flex flex-col items-center my-10 gap-5">
           <div className="flex flex-col items-center gap-1 p-2">
             <Avatar size="xl" imageUrl={user.imageUrl} />
-            <p className="font-medium text-lg">{user.name}</p>
-            <p>{user.description}</p>
+            <p className="font-medium text-lg word-break: break-all">
+              {user.name}
+            </p>
+            <p className="word-break: break-all">{user.description}</p>
           </div>
           <div className="flex flex-col items-center">
             <SectionHeader

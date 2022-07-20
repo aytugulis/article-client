@@ -72,11 +72,9 @@ const Form = () => {
         />
         <FileInput registerName="file" />
         <HtmlEditor registerName="content" />
-        <div className="flex flex-col items-center lg:flex-row gap-1">
-          <h3 className="font-semibold">Categories</h3>
 
-          <RadioButtonList registerName="category" />
-        </div>
+        <RadioButtonList registerName="category" />
+
         <Button
           rightIcon={<Plus size={24} className="text-white" />}
           color="tropical-blue"

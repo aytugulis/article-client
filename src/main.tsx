@@ -12,22 +12,15 @@ import "react-quill/dist/quill.snow.css";
 
 const cacheTime = 1000 * 60 * 60 * 24 * 7;
 
+function onError(error: any) {
+  console.log(error);
+  if (error?.response?.status === 401)
+    queryClient.setQueryData("userData", undefined);
+  toast.error(error?.response?.data?.message);
+}
+
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime,
-      onError: (error: any) => toast.error(error?.response?.data?.message),
-      /*       onSuccess: () => toast.success("success"), */
-    },
-    mutations: {
-      onError: (error: any) => {
-        toast.error(error?.response?.data?.message);
-      },
-      onSuccess: () => {
-        toast.success("success");
-      },
-    },
-  },
+  defaultOptions: { queries: { cacheTime, onError }, mutations: { onError } },
 });
 
 const localStoragePersistor = createWebStoragePersistor({

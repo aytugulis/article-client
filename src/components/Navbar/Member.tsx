@@ -1,3 +1,4 @@
+import cx from "classnames";
 import { PencilLine } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,27 +15,32 @@ export const Member = () => {
     <ul className="flex items-center gap-3">
       <li>
         <Link to="create-article">
-          <Badge
-            className="flex items-center gap-1 cursor-pointer"
-            color="secondary"
-          >
-            <PencilLine weight="fill" />
-            <p className="font-medium">Write</p>
+          <Badge className="flex cursor-pointer" color="secondary">
+            <div className="flex items-center gap-1 hover:animate-bounce">
+              <PencilLine weight="fill" />
+              <p className="font-medium">Write</p>
+            </div>
           </Badge>
         </Link>
       </li>
       <li
-        className="flex flex-col items-center"
+        className="flex flex-col items-center cursor-pointer group"
         onClick={() => setIsProfileOpen(!isProfileOpen)}
       >
         <Avatar
           className="cursor-pointer"
-          imageUrl={
-            userData?.imageUrl ||
-            "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
-          }
-          size="sm"
+          imageUrl={userData?.imageUrl}
+          size="xs"
         />
+
+        <p
+          className={cx(
+            "text-xs font-thin text-white group-hover:text-gray-300 duration-300",
+            { "text-gray-300": isProfileOpen }
+          )}
+        >
+          Options
+        </p>
         {isProfileOpen && <ProfileMenu />}
       </li>
     </ul>

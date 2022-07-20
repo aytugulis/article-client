@@ -1,4 +1,4 @@
-import { Lock, At, IdentificationCard, Password } from "phosphor-react";
+import { Lock, At, IdentificationCard, Password, Quotes } from "phosphor-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
@@ -61,10 +61,11 @@ export const RegisterPage = () => {
         />
         <TextInput
           registerName="description"
-          leftIcon={<Password size={24} className="text-gray-500" />}
+          leftIcon={<Quotes size={24} className="text-gray-500" />}
           placeholder="Enter a description"
         />
         <TextInput
+          type="password"
           registerName="password"
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter a password"

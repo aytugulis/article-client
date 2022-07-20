@@ -44,6 +44,7 @@ export const LoginPage = () => {
           placeholder="Enter your email"
         />
         <TextInput
+          type="password"
           registerName="password"
           leftIcon={<Password size={24} className="text-gray-500" />}
           placeholder="Enter your password"
