@@ -1,5 +1,5 @@
 import { Endpoint } from "../../type/Endpoint";
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { Category, PopulatedArticle } from "../../type/Article";
 import { axiosClient } from "../../utils/client";
 
@@ -24,15 +24,18 @@ interface GetArticles {
   currentPage: number;
 }
 export interface GetArticlesProps {
-  page?: string;
+  pageParam?: string;
   limit?: string;
   category?: string;
   authorId?: string;
 }
-const getArticles = async (props: GetArticlesProps) => {
-  const { authorId, category, limit, page } = props;
+const getArticles = async (props: any) => {
+  // TODO: type
+  const { pageParam } = props;
+  const { authorId, category, limit } = props.queryKey[1].props;
+
   const queryString = new URLSearchParams({
-    page: page || "1",
+    page: pageParam || "1",
     limit: limit || "6",
     ...(category && { category }),
     ...(authorId && { author: authorId }),
@@ -44,5 +47,12 @@ const getArticles = async (props: GetArticlesProps) => {
   return data;
 };
 export function useArticles(props: GetArticlesProps) {
-  return useQuery<GetArticles, Error>(["posts"], () => getArticles(props));
+  return useInfiniteQuery<GetArticles, [string, GetArticlesProps]>(
+    ["posts", { props }],
+    getArticles,
+    {
+      getNextPageParam: ({ totalPages, currentPage }) =>
+        totalPages !== currentPage && currentPage + 1,
+    }
+  );
 }
