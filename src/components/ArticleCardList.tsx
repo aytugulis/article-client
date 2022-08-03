@@ -5,6 +5,12 @@ import { GetArticlesProps, useArticles } from "../hooks";
 import cx from "classnames";
 import { setContentLength } from "../utils/format";
 import { Button } from "./Button";
+import {
+  ArrowsOutLineHorizontal,
+  ArrowsOutLineVertical,
+  CircleNotch,
+  Rewind,
+} from "phosphor-react";
 
 interface ArticleCardListProps extends GetArticlesProps {
   page?: string;
@@ -21,30 +27,22 @@ export const ArticleCardList: React.FC<ArticleCardListProps> = ({
   page,
   withIcon,
 }) => {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-    isLoading,
-  } = useArticles({
-    category,
-    authorId,
-    limit,
-    pageParam: page,
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useArticles({
+      category,
+      authorId,
+      limit,
+      pageParam: page,
+    });
   const articleLength = data?.pages?.length;
 
   if (!articleLength) return <p>No data found</p>;
-  console.log(hasNextPage);
+
   return (
     <>
-      {(isLoading || isFetchingNextPage) && <Loading />}
+      {isLoading && <Loading />}
       <ul
-        className={cx("flex flex-wrap", {
+        className={cx("flex flex-wrap justify-center", {
           "w-full 2xl:w-11/12": articleLength > 3,
         })}
       >
@@ -74,6 +72,21 @@ export const ArticleCardList: React.FC<ArticleCardListProps> = ({
         disabled={!hasNextPage || isFetchingNextPage}
         color="tropical-blue"
         size="sm"
+        leftIcon={
+          isFetchingNextPage ? (
+            <CircleNotch
+              className="text-white animate-spin"
+              weight="fill"
+              size={20}
+            />
+          ) : (
+            <ArrowsOutLineHorizontal
+              className="text-white"
+              weight="fill"
+              size={20}
+            />
+          )
+        }
       >
         {hasNextPage ? "Load More" : "Nothing more to load"}
       </Button>

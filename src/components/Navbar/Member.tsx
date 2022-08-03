@@ -16,7 +16,7 @@ export const Member = () => {
       <li>
         <Link to="create-article">
           <Badge className="flex cursor-pointer" color="secondary">
-            <div className="flex items-center gap-1 hover:animate-bounce">
+            <div className="flex items-center gap-1 hover:animate-pulse">
               <PencilLine weight="fill" />
               <p className="font-medium">Write</p>
             </div>

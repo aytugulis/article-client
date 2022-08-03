@@ -38,7 +38,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       )}
     >
       <ArticleImage imageUrl={imageUrl} />
-      <div className="flex flex-col gap-1 items-center lg:items-start w-1/2">
+      <div className="flex flex-col gap-1 items-center lg:items-start w-40">
         <CardType
           withIcon={withIcon}
           profileImage={profileImage}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: `${import.meta.env.VITE_SERVER_URL}/api`,
   timeout: 10000,
 });

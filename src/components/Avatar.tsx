@@ -32,6 +32,10 @@ export const Avatar: React.FC<AvatarProps> = ({
       )}
       src={getImageUrl("user", imageUrl)}
       alt="Avatar"
+      onError={({ currentTarget }) => {
+        currentTarget.onerror = null;
+        currentTarget.src = getImageUrl("user");
+      }}
     />
   );
 };

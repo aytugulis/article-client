@@ -33,6 +33,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      animation: {
+        banner: "pulse 1s linear 1",
+      },
       colors: {
         primary: polish("#148F72"),
         secondary: polish("#FA7365"),
