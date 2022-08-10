@@ -1,10 +1,9 @@
 import { Lock, At, IdentificationCard, Password, Quotes } from "phosphor-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { useRegister } from "../hooks";
-import { useState } from "react";
 import { Loading } from "../components/Loading";
 import { FileInput } from "../components/FileInput";
 import { useQueryClient } from "react-query";

@@ -1,12 +1,5 @@
 import cx from "classnames";
-import {
-  DeepRequired,
-  FieldError,
-  FieldErrorsImpl,
-  Merge,
-  RegisterOptions,
-  useFormContext,
-} from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { Error } from "./Error";
 import { InlineIcon } from "./InlineIcon";
 

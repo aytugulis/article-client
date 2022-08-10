@@ -1,4 +1,4 @@
-import { Book, ThumbsUp } from "phosphor-react";
+import { Book } from "phosphor-react";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArticleCardList } from "../components/ArticleCardList";

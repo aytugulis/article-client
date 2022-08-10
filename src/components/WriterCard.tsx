@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { setContentLength } from "../utils/format";
 import { Avatar } from "./Avatar";
-import { Badge } from "./Badge";
-import { Button } from "./Button";
 
 interface WriterCardProps {
   profileImage: string;

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { At, IdentificationCard, Quotes, ArrowUp } from "phosphor-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormBox } from "../components/FormBox";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";

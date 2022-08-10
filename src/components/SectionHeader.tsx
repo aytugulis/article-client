@@ -1,5 +1,4 @@
 import cx from "classnames";
-import { Book } from "phosphor-react";
 import React from "react";
 
 interface SectionHeaderProps

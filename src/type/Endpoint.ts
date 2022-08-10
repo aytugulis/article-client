@@ -1,7 +1,4 @@
 export const Endpoint = {
-  test: "test",
-  testById: (id: string) => `test/${id}`,
-
   register: "auth/register",
   login: "auth/login",
   updateUser: "auth/edit",
@@ -13,4 +10,5 @@ export const Endpoint = {
   getArticle: (id: string) => `article/${id}`,
   deleteArticle: (id: string) => `article/${id}`,
   updateArticle: (id: string) => `article/${id}`,
+  getBannerArticles: "article/get-banner-articles",
 };

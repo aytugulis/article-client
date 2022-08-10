@@ -3,14 +3,8 @@ import { ArticleCard } from "./ArticleCard/ArticleCard";
 import { Loading } from "../components/Loading";
 import { GetArticlesProps, useArticles } from "../hooks";
 import cx from "classnames";
-import { setContentLength } from "../utils/format";
 import { Button } from "./Button";
-import {
-  ArrowsOutLineHorizontal,
-  ArrowsOutLineVertical,
-  CircleNotch,
-  Rewind,
-} from "phosphor-react";
+import { ArrowsOutLineHorizontal, CircleNotch } from "phosphor-react";
 
 interface ArticleCardListProps extends GetArticlesProps {
   page?: string;

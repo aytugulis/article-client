@@ -1,6 +1,6 @@
 import { Endpoint } from "../../type/Endpoint";
 import { useInfiniteQuery, useQuery } from "react-query";
-import { Category, PopulatedArticle } from "../../type/Article";
+import { PopulatedArticle } from "../../type/Article";
 import { axiosClient } from "../../utils/client";
 
 const getArticle = async (articleId: string) => {
@@ -54,5 +54,15 @@ export function useArticles(props: GetArticlesProps) {
       getNextPageParam: ({ totalPages, currentPage }) =>
         totalPages !== currentPage && currentPage + 1,
     }
+  );
+}
+
+const getBannerArticles = async () => {
+  const { data } = await axiosClient.get(Endpoint.getBannerArticles);
+  return data.articles;
+};
+export function useBannerArticles() {
+  return useQuery<PopulatedArticle[], Error>(["banner"], () =>
+    getBannerArticles()
   );
 }

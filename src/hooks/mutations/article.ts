@@ -1,6 +1,7 @@
 import { Endpoint } from "../../type/Endpoint";
 import { useMutation } from "react-query";
 import { axiosClient } from "../../utils/client";
+
 interface CreateArticleProps {
   header: string;
   content: string;
