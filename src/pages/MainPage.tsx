@@ -8,7 +8,7 @@ export const MainPage = () => {
   return (
     <div className="flex flex-col items-center gap-10 mb-5">
       <Banner />
-      <section className="flex flex-col items-center lg:flex-row mx-10">
+      <section className="flex flex-col xl:flex-row items-center gap-10">
         <SectionHeader
           icon={<User weight="fill" size={20} />}
           title="Top Authors"

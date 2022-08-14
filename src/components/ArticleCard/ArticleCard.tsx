@@ -31,7 +31,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     <Link
       to={`/article/${id}`}
       className={cx(
-        "flex flex-col lg:flex-row justify-center items-center gap-4 mx-10 p-4 cursor-pointer duration-300 rounded hover:bg-gray-400",
+        "flex flex-col lg:flex-row justify-center items-center gap-3 py-4 px-20 cursor-pointer duration-300 rounded hover:bg-gray-400",
         {
           "xl:basis-1/3 lg:basis-1/2 basis-full mx-0": articleLength > 3,
         }
@@ -42,12 +42,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <CardType
           withIcon={withIcon}
           profileImage={profileImage}
-          fullName={setContentLength(fullName, 15)}
+          fullName={setContentLength(fullName, 24)}
           id={id}
         />
 
-        <p className="font-medium text-base">{setContentLength(header, 15)}</p>
-        <p className="font-medium text-tropical-blue-600">{category}</p>
+        <p className="font-medium text-sm word-break: break-all">
+          {setContentLength(header, 40)}
+        </p>
+        <p className="font-medium text-sm text-tropical-blue-600">{category}</p>
         <p className="text-sm font-light">{date.slice(0, 10)}</p>
       </div>
     </Link>

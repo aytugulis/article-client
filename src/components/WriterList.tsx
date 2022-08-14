@@ -7,7 +7,7 @@ export const WriterList = () => {
   return (
     <>
       {isLoading && <Loading />}
-      <ul className="flex items-center flex-wrap">
+      <ul className="flex items-center flex-wrap justify-between gap-y-10">
         {data?.topAuthors.map(({ author }) => (
           <WriterCard
             key={author._id}

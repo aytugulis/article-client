@@ -24,7 +24,7 @@ export const Member = () => {
         </Link>
       </li>
       <li
-        className="flex flex-col items-center cursor-pointer group"
+        className="flex flex-col items-center cursor-pointer hover:bg-secondary-500 rounded-lg duration-300"
         onClick={() => setIsProfileOpen(!isProfileOpen)}
       >
         <Avatar
@@ -34,10 +34,9 @@ export const Member = () => {
         />
 
         <p
-          className={cx(
-            "text-xs font-thin text-white group-hover:text-gray-300 duration-300",
-            { "text-gray-300": isProfileOpen }
-          )}
+          className={cx("text-xs font-thin text-white duration-300", {
+            "text-gray-300": isProfileOpen,
+          })}
         >
           Options
         </p>

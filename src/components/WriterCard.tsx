@@ -17,18 +17,18 @@ export const WriterCard: React.FC<WriterCardProps> = ({
   description,
 }) => {
   return (
-    <li className="flex flex-col basis-full lg:basis-0 p-5 gap-1">
+    <li className="flex flex-col basis-full xl:basis-0 items-center">
       <Link
         to={`/profile/${id}`}
-        className="flex flex-col items-center p-3 duration-300 rounded hover:bg-gray-400"
+        className="flex flex-col items-center w-full xl:w-80 duration-300 rounded hover:bg-gray-400 py-2"
       >
         <Avatar imageUrl={profileImage} size="lg" />
 
-        <span className="font-medium text-gray-700">
-          {setContentLength(fullName, 15)}
-        </span>
+        <p className="font-medium text-gray-700">
+          {setContentLength(fullName, 30)}
+        </p>
 
-        <p>{setContentLength(description, 15)}</p>
+        <p>{setContentLength(description, 30)}</p>
       </Link>
     </li>
   );

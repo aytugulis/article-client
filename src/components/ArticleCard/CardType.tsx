@@ -36,7 +36,7 @@ export const CardType: React.FC<CardTypeProps> = ({
       <div className="flex items-center gap-2">
         {isLoading && <Loading />}
         <Avatar imageUrl={profileImage} size="xs" />
-        <span className="text-sm font-medium text-gray-700">{fullName}</span>
+        <span className="text-xs font-medium text-gray-700">{fullName}</span>
       </div>
     );
 

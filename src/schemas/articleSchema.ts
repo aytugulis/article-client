@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { removeHtmlTags } from "../utils/format";
 
 const minContentLength = 20;
-const maxContentLength = 1000;
+const maxContentLength = 5000;
 export const articleSchema = yup.object().shape({
   category: yup
     .string()
@@ -29,6 +29,6 @@ export const articleSchema = yup.object().shape({
       }
     )
     .required(),
-  header: yup.string().min(3).max(20).required(),
+  header: yup.string().min(3).max(40).required(),
   file: yup.mixed(),
 });
