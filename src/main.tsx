@@ -9,18 +9,23 @@ import { toast, ToastContainer } from "react-toastify";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "react-quill/dist/quill.snow.css";
+import { AxiosError } from "axios";
 
 const cacheTime = 1000 * 60 * 60 * 24 * 7;
 
-function onError(error: any) {
-  console.log(error);
-  if (error?.response?.status === 401)
-    queryClient.setQueryData("userData", undefined);
-  toast.error(error?.response?.data?.message);
+function onError(error: unknown) {
+  if (error instanceof AxiosError) {
+    if (error?.response?.status === 401)
+      queryClient.setQueryData("userData", undefined);
+    toast.error(error?.response?.data?.message);
+  }
 }
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { cacheTime, onError }, mutations: { onError } },
+  defaultOptions: {
+    queries: { cacheTime, onError, staleTime: 1000 * 60 * 15 },
+    mutations: { onError },
+  },
 });
 
 const localStoragePersistor = createWebStoragePersistor({

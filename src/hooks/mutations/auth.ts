@@ -1,8 +1,8 @@
-import { AuthData } from "./../../type/AuthData";
-import { Endpoint } from "../../type/Endpoint";
+import { AuthData } from "../../types/AuthData";
+import { Endpoint } from "../../types/Endpoint";
 import { useMutation } from "react-query";
 import { axiosClient } from "../../utils/client";
-import { Author } from "../../type/Author";
+import { Author } from "../../types/Author";
 
 interface RegisterProps {
   name: string;

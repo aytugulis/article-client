@@ -1,5 +1,5 @@
 import cx from "classnames";
-import { Variant, Size } from "../type/Variant";
+import { Variant, Size } from "../types/Variant";
 import { InlineIcon } from "./InlineIcon";
 import styled from "styled-components";
 

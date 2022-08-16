@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Size } from "../type/Variant";
+import { Size } from "../types/Variant";
 import { getImageUrl } from "../utils/url";
 
 interface AvatarProps

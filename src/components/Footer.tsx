@@ -9,7 +9,7 @@ export const Footer = () => {
           size={28}
           weight="fill"
           color="#0072b1"
-          className="hover:bg-secondary-200 duration-500"
+          className="hover:bg-white duration-500"
         />
       </a>
       <a target="_blank" href="https://github.com/aytugulis">
@@ -17,7 +17,7 @@ export const Footer = () => {
           size={28}
           weight="fill"
           color="#333"
-          className="hover:bg-secondary-200 duration-500"
+          className="hover:bg-white duration-500"
         />
       </a>
     </footer>

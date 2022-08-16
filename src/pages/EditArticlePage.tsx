@@ -48,7 +48,7 @@ const Form = () => {
       { ...data, file: data?.file?.[0], token: userData?.token, id },
       {
         onSuccess() {
-          queryClient.invalidateQueries(["posts", id]);
+          queryClient.invalidateQueries();
           navigate("/my-articles");
         },
       }

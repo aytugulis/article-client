@@ -1,5 +1,4 @@
-import cx from "classnames";
-import { PencilLine } from "phosphor-react";
+import { CaretDoubleDown, PencilLine } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks";
@@ -24,7 +23,7 @@ export const Member = () => {
         </Link>
       </li>
       <li
-        className="flex flex-col items-center cursor-pointer hover:bg-secondary-500 rounded-lg duration-300"
+        className="flex flex-col items-center cursor-pointer rounded-lg group"
         onClick={() => setIsProfileOpen(!isProfileOpen)}
       >
         <Avatar
@@ -33,13 +32,10 @@ export const Member = () => {
           size="xs"
         />
 
-        <p
-          className={cx("text-xs font-thin text-white duration-300", {
-            "text-gray-300": isProfileOpen,
-          })}
-        >
-          Options
-        </p>
+        <div className="flex items-center justify-center text-white group-hover:text-secondary duration-300">
+          <p className="text-xs font-thin">Me</p>
+          <CaretDoubleDown size={14} />
+        </div>
         {isProfileOpen && <ProfileMenu />}
       </li>
     </ul>

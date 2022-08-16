@@ -1,6 +1,11 @@
-import { Endpoint } from "../../type/Endpoint";
-import { useInfiniteQuery, useQuery } from "react-query";
-import { PopulatedArticle } from "../../type/Article";
+import { Endpoint } from "../../types/Endpoint";
+import {
+  QueryFunctionContext,
+  QueryKey,
+  useInfiniteQuery,
+  useQuery,
+} from "react-query";
+import { PopulatedArticle } from "../../types/Article";
 import { axiosClient } from "../../utils/client";
 
 const getArticle = async (articleId: string) => {
@@ -29,10 +34,12 @@ export interface GetArticlesProps {
   category?: string;
   authorId?: string;
 }
-const getArticles = async (props: any) => {
-  // TODO: type
+const getArticles = async (
+  props: QueryFunctionContext<string | readonly unknown[]>
+) => {
   const { pageParam } = props;
-  const { authorId, category, limit } = props.queryKey[1].props;
+  const articleProps = props?.queryKey?.[1] as { props: GetArticlesProps };
+  const { authorId, category, limit } = articleProps?.props;
 
   const queryString = new URLSearchParams({
     page: pageParam || "1",

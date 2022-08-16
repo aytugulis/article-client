@@ -9,11 +9,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.6",
-    "@types/yup": "^0.29.14",
     "autoprefixer": "^10.4.4",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
-    "immer": "^9.0.15",
     "phosphor-react": "^1.4.1",
     "polished": "^4.2.2",
     "postcss": "^8.4.12",
@@ -26,10 +24,10 @@
     "react-toastify": "^9.0.1",
     "styled-components": "^5.3.5",
     "tailwindcss": "^3.0.24",
-    "yup": "^0.32.11",
-    "zustand": "^4.0.0-rc.1"
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/yup": "^0.29.14",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/styled-components": "^5.1.25",

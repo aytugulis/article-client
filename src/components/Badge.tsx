@@ -1,5 +1,5 @@
 import cx from "classnames";
-import { Variant } from "../type/Variant";
+import { Variant } from "../types/Variant";
 
 interface BadgeProps
   extends React.DetailedHTMLProps<

@@ -6,6 +6,7 @@ import cx from "classnames";
 import { Button } from "./Button";
 import { ArrowsOutLineHorizontal, CircleNotch } from "phosphor-react";
 import { useParams } from "react-router-dom";
+import { Article, PopulatedArticle } from "../types/Article";
 
 interface ArticleCardListProps extends GetArticlesProps {
   page?: string;
@@ -48,7 +49,7 @@ export const ArticleCardList: React.FC<ArticleCardListProps> = ({
             {data.pages.map((group, i) => (
               <React.Fragment key={i}>
                 {group.articles
-                  .filter(({ _id }: any) => _id !== params.id)
+                  .filter(({ _id }: PopulatedArticle) => _id !== params.id)
                   .map(
                     ({
                       imageUrl,
@@ -57,7 +58,7 @@ export const ArticleCardList: React.FC<ArticleCardListProps> = ({
                       createdAt,
                       category,
                       _id,
-                    }: any) => (
+                    }: PopulatedArticle) => (
                       <ArticleCard
                         key={_id}
                         id={_id}

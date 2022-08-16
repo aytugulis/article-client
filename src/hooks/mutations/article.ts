@@ -1,4 +1,4 @@
-import { Endpoint } from "../../type/Endpoint";
+import { Endpoint } from "../../types/Endpoint";
 import { useMutation } from "react-query";
 import { axiosClient } from "../../utils/client";
 

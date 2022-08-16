@@ -11,6 +11,7 @@ import { FileInput } from "../components/FileInput";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { articleSchema } from "../schemas/articleSchema";
+import { useQueryClient } from "react-query";
 
 interface CreateArticleInput {
   category: string;
@@ -20,6 +21,7 @@ interface CreateArticleInput {
 }
 
 export const CreateArticlePage = () => {
+  const queryClient = useQueryClient();
   const userData = useAuth();
   const navigate = useNavigate();
   const methods = useForm<CreateArticleInput>({
@@ -32,6 +34,7 @@ export const CreateArticlePage = () => {
       { ...data, file: data?.file?.[0], token: userData?.token },
       {
         onSuccess() {
+          queryClient.invalidateQueries();
           navigate("/");
         },
       }

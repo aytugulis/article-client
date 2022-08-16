@@ -41,6 +41,7 @@ export const EditProfilePage: React.FC = () => {
             ...data,
             token: variables.token,
           });
+          queryClient.invalidateQueries();
           navigate("/");
         },
       }

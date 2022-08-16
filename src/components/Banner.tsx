@@ -39,13 +39,18 @@ export const Banner = () => {
   const defaultImage = getImageUrl("article");
 
   return (
-    <section
-      style={{
-        backgroundImage: `url('${formattedImageUrl}'), url('${defaultImage}')`,
-      }}
-      className="w-full h-[500px] bg-center"
-    >
-      <div className="flex items-center justify-around w-full mt-32">
+    <section className="w-full relative">
+      <img
+        draggable={false}
+        key={_id}
+        className="animate-banner w-full h-[500px] object-none"
+        src={formattedImageUrl}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = defaultImage;
+        }}
+      />
+      <div className="flex items-center justify-around w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 absolute">
         <Button
           size="sm"
           className="cursor-pointer"
@@ -54,17 +59,13 @@ export const Banner = () => {
         >
           <Rewind className="text-white" weight="fill" size={30} />
         </Button>
-        <div className="flex flex-col items-center gap-4 text-tropical-blue w-1/2 p-10 ">
+        <div className="flex flex-col items-center gap-4 text-tropical-blue-300 w-1/2 p-10 ">
           <Avatar imageUrl={authorImageUrl} size="lg" />
           <div className="bg-black bg-opacity-50">
-            <p className="text-md lg:text-lg font-black p-1 mix-blend-exclusion">
-              {name}
-            </p>
+            <p className="text-md lg:text-lg font-black p-1">{name}</p>
           </div>
           <div className="bg-black bg-opacity-50">
-            <h2 className="text-lg lg:text-4xl font-bold p-1 mix-blend-exclusion">
-              {header}
-            </h2>
+            <h2 className="text-lg lg:text-4xl font-bold p-1">{header}</h2>
           </div>
           <Link to={`/article/${_id}`}>
             <Badge color="tropical-blue">Read Now</Badge>

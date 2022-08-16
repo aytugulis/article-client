@@ -28,7 +28,7 @@ export const CardType: React.FC<CardTypeProps> = ({
     if (!id || !user) return;
 
     await mutateAsync({ id, token: user.token });
-    queryClient.invalidateQueries("posts");
+    queryClient.invalidateQueries();
   };
 
   if (!withIcon)
