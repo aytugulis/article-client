@@ -12,6 +12,7 @@ import "react-quill/dist/quill.snow.css";
 import { AxiosError } from "axios";
 
 const cacheTime = 1000 * 60 * 60 * 24 * 7;
+const staleTime = 1000 * 60 * 15;
 
 function onError(error: unknown) {
   if (error instanceof AxiosError) {
@@ -23,7 +24,7 @@ function onError(error: unknown) {
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { cacheTime, onError, staleTime: 1000 * 60 * 15 },
+    queries: { cacheTime, onError, staleTime },
     mutations: { onError },
   },
 });
