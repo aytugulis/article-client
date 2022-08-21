@@ -35,15 +35,15 @@ export const Banner = () => {
     imageUrl,
     author: { imageUrl: authorImageUrl, name },
   } = data[bannerIndex];
-  const formattedImageUrl = getImageUrl("article", imageUrl);
-  const defaultImage = getImageUrl("article");
+  const formattedImageUrl = getImageUrl("banner", imageUrl);
+  const defaultImage = getImageUrl("banner");
 
   return (
     <section className="w-full relative">
       <img
         draggable={false}
         key={_id}
-        className="animate-banner w-full h-[500px] object-none"
+        className="w-full h-[500px] object-cover animate-banner"
         src={formattedImageUrl}
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
@@ -62,10 +62,14 @@ export const Banner = () => {
         <div className="flex flex-col items-center gap-4 text-tropical-blue-300 w-1/2 p-10 ">
           <Avatar imageUrl={authorImageUrl} size="lg" />
           <div className="bg-black bg-opacity-50">
-            <p className="text-md lg:text-lg font-black p-1">{name}</p>
+            <p className="text-sm lg:text-md font-medium lg:font-black  p-1 word-break: break-all">
+              {name}
+            </p>
           </div>
           <div className="bg-black bg-opacity-50">
-            <h2 className="text-lg lg:text-4xl font-bold p-1">{header}</h2>
+            <h2 className="text-md lg:text-2xl font-bold p-1 word-break: break-all">
+              {header}
+            </h2>
           </div>
           <Link to={`/article/${_id}`}>
             <Badge color="tropical-blue">Read Now</Badge>

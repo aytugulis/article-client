@@ -37,7 +37,7 @@ export const ProfileMenu: React.FC = () => {
   }
 
   return (
-    <ul className="absolute top-14 rounded-md bg-white divide-y divide-gray-600 border border-gray-600 text-gray-600 z-10 animate-banner">
+    <ul className="absolute top-14 rounded-md bg-white divide-y divide-gray-600 border border-gray-600 text-gray-600 z-10">
       <MenuItem
         icon={<User weight="fill" size={21} />}
         to="/edit-profile"
